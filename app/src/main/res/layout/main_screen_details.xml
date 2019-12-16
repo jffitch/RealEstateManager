@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/surfaceIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/surface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/surfaceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/surface"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/surfaceStats"
+                app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+                app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
+
+            <TextView
+                android:id="@+id/surfaceStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="1000 sq m"
+                app:layout_constraintBottom_toBottomOf="@id/surfaceIcon"
+                app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+                app:layout_constraintTop_toBottomOf="@id/surfaceLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/roomsIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/house"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/roomsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/rooms"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/roomsStats"
+                app:layout_constraintStart_toEndOf="@id/roomsIcon"
+                app:layout_constraintTop_toTopOf="@id/roomsIcon" />
+
+            <TextView
+                android:id="@+id/roomsStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="4"
+                app:layout_constraintBottom_toBottomOf="@id/roomsIcon"
+                app:layout_constraintStart_toEndOf="@id/roomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/roomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/bathroomsIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/bath"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bathroomsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/bathrooms"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/bathroomsStats"
+                app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
+                app:layout_constraintTop_toTopOf="@id/bathroomsIcon" />
+
+            <TextView
+                android:id="@+id/bathroomsStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="1"
+                app:layout_constraintBottom_toBottomOf="@id/bathroomsIcon"
+                app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/bathroomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/bedroomsIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/bed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bedroomsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/bedrooms"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/bedroomsStats"
+                app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
+                app:layout_constraintTop_toTopOf="@id/bedroomsIcon" />
+
+            <TextView
+                android:id="@+id/bedroomsStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="2"
+                app:layout_constraintBottom_toBottomOf="@id/bedroomsIcon"
+                app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/bedroomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/location"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/locationStats"
+                app:layout_constraintStart_toEndOf="@id/locationIcon"
+                app:layout_constraintTop_toTopOf="@id/locationIcon" />
+
+            <TextView
+                android:id="@+id/locationStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="17 Bailey Avenue\nWallingford, CT 06492"
+                app:layout_constraintBottom_toBottomOf="@id/locationIcon"
+                app:layout_constraintStart_toEndOf="@id/locationIcon"
+                app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>
