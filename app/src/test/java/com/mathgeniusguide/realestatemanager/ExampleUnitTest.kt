@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager
+package com.mathgeniusguide.realestatemanager
 
 import org.junit.Test
 

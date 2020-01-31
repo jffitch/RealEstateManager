@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main">
+    <fragment android:id="@+id/add"
+        android:name="com.mathgeniusguide.realestatemanager.ui.AddFragment"
+        android:label="@string/add"
+        tools:layout="@layout/add_fragment">
+    </fragment>
+    <fragment android:id="@+id/edit"
+        android:name="com.mathgeniusguide.realestatemanager.ui.EditFragment"
+        android:label="@string/edit"
+        tools:layout="@layout/edit_fragment">
+    </fragment>
+    <fragment android:id="@+id/search"
+        android:name="com.mathgeniusguide.realestatemanager.ui.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/search_fragment">
+    </fragment>
+    <fragment android:id="@+id/main"
+        android:name="com.mathgeniusguide.realestatemanager.ui.MainFragment"
+        android:label="@string/main"
+        tools:layout="@layout/main_fragment">
+        <action android:id="@+id/action_main_to_add"
+            app:destination="@id/add"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out" />
+        <action android:id="@+id/action_main_to_edit"
+            app:destination="@id/edit"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out" />
+        <action android:id="@+id/action_main_to_search"
+            app:destination="@id/search"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out" />
+    </fragment>
+</navigation>

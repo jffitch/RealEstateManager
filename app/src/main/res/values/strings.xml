@@ -7,4 +7,16 @@
     <string name="bathrooms">Number of Bathrooms</string>
     <string name="bedrooms">Number of Bedrooms</string>
     <string name="location">Location</string>
+
+    <!--House Types-->
+    <string name="house">House</string>
+    <string name="flat">Flat</string>
+    <string name="duplex">Duplex</string>
+    <string name="penthouse">Penthouse</string>
+
+    <!--Fragment Names-->
+    <string name="add">add</string>
+    <string name="edit">edit</string>
+    <string name="main">main</string>
+    <string name="search">search</string>
 </resources>
