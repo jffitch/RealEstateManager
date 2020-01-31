@@ -12,7 +12,9 @@ import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.adapter.HouseAdapter
 import com.mathgeniusguide.realestatemanager.objects.HouseItem
+import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.main_fragment_details.*
 
 class MainFragment: Fragment() {
     lateinit var act: MainActivity
@@ -31,12 +33,12 @@ class MainFragment: Fragment() {
         houseList.layoutManager = LinearLayoutManager(context)
 
         if (act.firebaseLoaded.value!!) {
-            houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!)
+            houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList)
         }
 
         act.firebaseLoaded.observe(viewLifecycleOwner, Observer {
             if (it != null && it) {
-                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!)
+                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList)
             }
         })
     }

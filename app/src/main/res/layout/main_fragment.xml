@@ -14,22 +14,19 @@
     <TextView
         android:text="Media"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:id="@+id/mediaLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/houseList"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageList"
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        app:layout_constraintHorizontal_weight="1"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@id/mediaLabel"
         app:layout_constraintStart_toEndOf="@id/houseList"
         android:layout_marginStart="20dp" />
@@ -37,18 +34,17 @@
     <TextView
         android:text="Description"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:id="@+id/descriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/imageList"
         app:layout_constraintStart_toEndOf="@id/houseList"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp" />
 
     <TextView
-        android:text="Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text "
+        android:text=""
         android:id="@+id/descriptionText"
         android:textSize="10sp"
         android:layout_width="0dp"
@@ -57,7 +53,6 @@
         app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
         app:layout_constraintStart_toEndOf="@id/houseList"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"/>
 
@@ -70,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@id/descriptionText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/houseList"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp" />

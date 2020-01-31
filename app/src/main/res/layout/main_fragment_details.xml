@@ -34,7 +34,7 @@
             <TextView
                 style="@style/details_stats"
                 android:id="@+id/surfaceStats"
-                android:text="1000 sq m"
+                android:text="0 sq m"
                 app:layout_constraintBottom_toBottomOf="@id/surfaceIcon"
                 app:layout_constraintStart_toEndOf="@id/surfaceIcon"
                 app:layout_constraintTop_toBottomOf="@id/surfaceLabel" />
@@ -64,7 +64,7 @@
             <TextView
                 style="@style/details_stats"
                 android:id="@+id/roomsStats"
-                android:text="4"
+                android:text="0"
                 app:layout_constraintBottom_toBottomOf="@id/roomsIcon"
                 app:layout_constraintStart_toEndOf="@id/roomsIcon"
                 app:layout_constraintTop_toBottomOf="@id/roomsLabel" />
@@ -94,7 +94,7 @@
             <TextView
                 style="@style/details_stats"
                 android:id="@+id/bathroomsStats"
-                android:text="1"
+                android:text="0"
                 app:layout_constraintBottom_toBottomOf="@id/bathroomsIcon"
                 app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
                 app:layout_constraintTop_toBottomOf="@id/bathroomsLabel" />
@@ -124,7 +124,7 @@
             <TextView
                 style="@style/details_stats"
                 android:id="@+id/bedroomsStats"
-                android:text="2"
+                android:text="0"
                 app:layout_constraintBottom_toBottomOf="@id/bedroomsIcon"
                 app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
                 app:layout_constraintTop_toBottomOf="@id/bedroomsLabel" />
@@ -160,7 +160,7 @@
             <TextView
                 style="@style/details_stats"
                 android:id="@+id/locationStats"
-                android:text="17 Bailey Avenue\nWallingford, CT 06492"
+                android:text=""
                 app:layout_constraintBottom_toBottomOf="@id/locationIcon"
                 app:layout_constraintStart_toEndOf="@id/locationIcon"
                 app:layout_constraintTop_toBottomOf="@id/locationLabel" />
