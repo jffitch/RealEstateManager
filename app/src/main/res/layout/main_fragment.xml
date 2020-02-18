@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:text="Media"
+        android:text="@string/media"
         android:textStyle="bold"
         android:textSize="15sp"
         android:id="@+id/mediaLabel"
@@ -32,7 +32,7 @@
         android:layout_marginStart="20dp" />
 
     <TextView
-        android:text="Description"
+        android:text="@string/description"
         android:textStyle="bold"
         android:textSize="15sp"
         android:id="@+id/descriptionLabel"

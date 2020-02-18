@@ -2,13 +2,38 @@
     <string name="app_name">Real Estate Manager</string>
 
     <!--Main Screen Details-->
-    <string name="surface">Surface Area</string>
-    <string name="rooms">Number of Rooms</string>
-    <string name="bathrooms">Number of Bathrooms</string>
-    <string name="bedrooms">Number of Bedrooms</string>
+    <string name="surface_area">Surface Area</string>
+    <string name="number_of_rooms">Number of Rooms</string>
+    <string name="number_of_bathrooms">Number of Bathrooms</string>
+    <string name="number_of_bedrooms">Number of Bedrooms</string>
     <string name="location">Location</string>
-    <string name="sq_m">%1$d sq m</string>
+    <string name="number_sq_m">%1$d sq m</string>
     <string name="dollar_sign">$%1$s</string>
+    <string name="media">Media</string>
+    <string name="description">Description:</string>
+
+    <!--Add House Fragment-->
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="borough">Borough</string>
+    <string name="zip">Zip</string>
+    <string name="stats">Stats</string>
+    <string name="price">Price $</string>
+    <string name="area">Area</string>
+    <string name="sq_m">sq m</string>
+    <string name="rooms">Rooms</string>
+    <string name="bedrooms">Bedrooms</string>
+    <string name="bathrooms">Bathrooms</string>
+    <string name="about">About</string>
+    <string name="type">Type</string>
+    <string name="add_image">ADD IMAGE</string>
+    <string name="remove_image">REMOVE IMAGE</string>
+    <string name="add_house">ADD HOUSE</string>
+    <string name="images">Images</string>
+    <string name="no_images_added_yet">No images added yet.</string>
+    <string name="room">Room</string>
+    <string name="url">URL</string>
+
 
     <!--House Types-->
     <string name="house">House</string>
@@ -17,8 +42,8 @@
     <string name="penthouse">Penthouse</string>
 
     <!--Fragment Names-->
-    <string name="add">add</string>
+    <string name="add_a_house">Add A House</string>
     <string name="edit">edit</string>
     <string name="main">main</string>
-    <string name="search">search</string>
+    <string name="search_houses">Search Houses</string>
 </resources>

@@ -25,7 +25,15 @@ fun Int.toHouseType(resources: Resources): String {
 fun String.toMediaImage(): MediaImage {
     val mediaImage = MediaImage()
     val list = this.split("|")
-    mediaImage.name = if (list.size >= 1) list[0] else ""
+    mediaImage.room = if (list.size >= 1) list[0] else ""
     mediaImage.url = if (list.size >= 2) list[1] else ""
     return mediaImage
+}
+
+fun MutableList<MediaImage>.toTextList(): String {
+    return this.map {"${it.room}: ${it.url}"}.joinToString("\n")
+}
+
+fun MutableList<MediaImage>.toFirebaseList(): String {
+    return this.map {"${it.room}|${it.url}"}.joinToString("||")
 }

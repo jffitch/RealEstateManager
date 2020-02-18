@@ -43,7 +43,7 @@ class HouseAdapter(private val items: ArrayList<HouseItem>,
         holder.houseLocation.text = i.borough
         holder.housePrice.text = String.format(context.resources.getString(R.string.dollar_sign), "%,d".format(i.price))
         holder.parent.setOnClickListener {
-            surfaceStats.text = String.format(context.resources.getString(R.string.sq_m), i.area)
+            surfaceStats.text = String.format(context.resources.getString(R.string.number_sq_m), i.area)
             roomsStats.text = i.rooms.toString()
             bathroomsStats.text = i.bathrooms.toString()
             bedroomsStats.text = i.bedrooms.toString()

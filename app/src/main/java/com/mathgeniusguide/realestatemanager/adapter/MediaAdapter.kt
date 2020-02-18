@@ -22,7 +22,7 @@ class MediaAdapter (private val items: ArrayList<MediaImage>, val context: Conte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = items[position]
         Glide.with(context).load(i.url).into(holder.roomImage)
-        holder.roomName.text = i.name
+        holder.roomName.text = i.room
         holder.parent.setOnClickListener {
 
         }

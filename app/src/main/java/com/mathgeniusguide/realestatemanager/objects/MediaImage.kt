@@ -1,6 +1,6 @@
 package com.mathgeniusguide.realestatemanager.objects
 
 class MediaImage {
-    var name = ""
+    var room = ""
     var url = ""
 }

@@ -1,6 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/locationLabel"
+            style="@style/add_fragment_section_label"
+            android:text="@string/location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/addressLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        <EditText
+            android:id="@+id/addressField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="300dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/addressLabel"
+            app:layout_constraintStart_toEndOf="@id/addressLabel" />
+
+        <TextView
+            android:id="@+id/cityLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addressLabel" />
+
+        <EditText
+            android:id="@+id/cityField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="120dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/cityLabel"
+            app:layout_constraintStart_toEndOf="@id/cityLabel" />
+
+        <TextView
+            android:id="@+id/boroughLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="15dp"
+            android:text="@string/borough"
+            app:layout_constraintBottom_toBottomOf="@id/cityLabel"
+            app:layout_constraintStart_toEndOf="@id/cityField" />
+
+        <EditText
+            android:id="@+id/boroughField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="120dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/cityLabel"
+            app:layout_constraintStart_toEndOf="@id/boroughLabel" />
+
+        <TextView
+            android:id="@+id/zipLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="15dp"
+            android:text="@string/zip"
+            app:layout_constraintBottom_toBottomOf="@id/cityLabel"
+            app:layout_constraintStart_toEndOf="@id/boroughField" />
+
+        <EditText
+            android:id="@+id/zipField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="60dp"
+            android:inputType="number"
+            android:maxLength="5"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/cityLabel"
+            app:layout_constraintStart_toEndOf="@id/zipLabel" />
+
+
+        <TextView
+            android:id="@+id/statsLabel"
+            style="@style/add_fragment_section_label"
+            android:text="@string/stats"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/zipField" />
+
+        <TextView
+            android:id="@+id/priceLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statsLabel" />
+
+        <EditText
+            android:id="@+id/priceField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="80dp"
+            android:inputType="number"
+            android:maxLength="8"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
+            app:layout_constraintStart_toEndOf="@id/priceLabel" />
+
+        <TextView
+            android:id="@+id/areaLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="30dp"
+            android:text="@string/area"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
+            app:layout_constraintStart_toEndOf="@id/priceField" />
+
+        <EditText
+            android:id="@+id/areaField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="40dp"
+            android:inputType="number"
+            android:maxLength="4"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
+            app:layout_constraintStart_toEndOf="@id/areaLabel" />
+
+        <TextView
+            android:id="@+id/areaUnitLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="5dp"
+            android:text="@string/sq_m"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
+            app:layout_constraintStart_toEndOf="@id/areaField" />
+
+
+        <TextView
+            android:id="@+id/roomsLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/rooms"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/priceLabel" />
+
+        <EditText
+            android:id="@+id/roomsField"
+            style="@style/add_fragment_rooms_edit_text"
+            android:inputType="number"
+            android:maxLength="2"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
+            app:layout_constraintStart_toEndOf="@id/roomsLabel" />
+
+        <TextView
+            android:id="@+id/bedLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="30dp"
+            android:text="@string/bedrooms"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
+            app:layout_constraintStart_toEndOf="@id/roomsField" />
+
+        <EditText
+            android:id="@+id/bedField"
+            style="@style/add_fragment_rooms_edit_text"
+            android:inputType="number"
+            android:maxLength="2"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
+            app:layout_constraintStart_toEndOf="@id/bedLabel" />
+
+        <TextView
+            android:id="@+id/bathLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="30dp"
+            android:text="@string/bathrooms"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
+            app:layout_constraintStart_toEndOf="@id/bedField" />
+
+        <EditText
+            android:id="@+id/bathField"
+            style="@style/add_fragment_rooms_edit_text"
+            android:inputType="number"
+            android:maxLength="2"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
+            app:layout_constraintStart_toEndOf="@id/bathLabel" />
+
+
+        <TextView
+            android:id="@+id/aboutLabel"
+            style="@style/add_fragment_section_label"
+            android:text="@string/about"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bathField" />
+
+        <TextView
+            android:id="@+id/typeLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutLabel" />
+
+        <RadioGroup
+            android:id="@+id/typeField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeLabel">
+
+            <RadioButton
+                android:id="@+id/house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/house" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flat" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/duplex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duplex" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/penthouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/penthouse" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeField" />
+
+        <EditText
+            android:id="@+id/descriptionField"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:lines="5"
+            android:text=""
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
+
+        <TextView
+            android:id="@+id/imagesLabel"
+            style="@style/add_fragment_section_label"
+            android:text="@string/images"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionField" />
+
+        <TextView
+            android:id="@+id/imagesList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/no_images_added_yet"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imagesLabel" />
+
+        <TextView
+            android:id="@+id/imageRoomLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/room"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imagesList" />
+
+        <EditText
+            android:id="@+id/imageRoomField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="200dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/imageRoomLabel"
+            app:layout_constraintStart_toEndOf="@id/imageRoomLabel" />
+
+        <TextView
+            android:id="@+id/imageUrlLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="15dp"
+            android:text="@string/url"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageRoomLabel" />
+
+        <EditText
+            android:id="@+id/imageUrlField"
+            style="@style/add_fragment_edit_text"
+            android:layout_width="300dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/imageUrlLabel"
+            app:layout_constraintStart_toEndOf="@id/imageUrlLabel" />
+
+        <Button
+            android:id="@+id/addImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/add_image"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/removeImageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imagesLabel"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/removeImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/remove_image"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/imageUrlLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addImageButton"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/addHouseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:paddingStart="50dp"
+            android:paddingTop="25dp"
+            android:paddingEnd="50dp"
+            android:paddingBottom="25dp"
+            android:text="@string/add_house"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageUrlLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <!-- code generator
+
+    locationLabel, tvb25, ww, tm25, lm25
+    addressLabel, tv15, ww, 0m5,, lm10
+    addressField, et15, 300, w, 1,, 1m5
+    cityLabel, tv15, ww, 1m5,, lm10
+    cityField, et15, 120, w, 3*,, 3m5
+    boroughLabel, tv15, ww, 3*,, 4m15
+    boroughField, et15, 120, w, 3*,, 5m5
+    zipLabel, tv15, ww, 3*,, 6m15
+    zipField, et15, 60, w, 3*,, 7m5
+    statsLabel, tvb25, ww, 8m25,, lm25
+    priceLabel, tv15, ww, 9m5,, lm10
+    priceField, et15, 80, w, 10*,, 10m5
+    areaLabel, tv15, ww, 10*,, 11m30
+    areaField, et15, 40, w, 10*,, 12m5
+    areaUnitLabel, tv15, ww, 10*,, 13m5
+    roomsLabel, tv15, ww, 10m5,, lm10
+    roomsField, et15, 25, w, 15*,, 15m5
+    bedLabel, tv15, ww, 15*,, 16m30
+    bedField, et15, 25, w, 15*,, 17m5
+    bathLabel, tv15, ww, 15*,, 18m30
+    bathField, et15, 25, w, 15*,, 19m5
+    imagesLabel, tv, ww, 15m25,, lm25
+    imagesList, tvi15, ww, 21m5,, lm10
+    imageRoomLabel, tv15, ww, 22m5,, lm10
+    imageRoomField, et15, 60, w,, 23*, 23m5
+    imageUrlLabel, tv15, ww,, 23*, 24m15
+    imageUrlField, et15, 120, w,, 23*, 25m5
+    addImageButton, bu15, ww,, 23*, 26m5
+    addButton, bub30, ww, 23m25,, lm25
+
+    -->

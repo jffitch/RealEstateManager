@@ -26,7 +26,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/surfaceLabel"
-                android:text="@string/surface"
+                android:text="@string/surface_area"
                 app:layout_constraintBottom_toTopOf="@id/surfaceStats"
                 app:layout_constraintStart_toEndOf="@id/surfaceIcon"
                 app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
@@ -56,7 +56,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/roomsLabel"
-                android:text="@string/rooms"
+                android:text="@string/number_of_rooms"
                 app:layout_constraintBottom_toTopOf="@id/roomsStats"
                 app:layout_constraintStart_toEndOf="@id/roomsIcon"
                 app:layout_constraintTop_toTopOf="@id/roomsIcon" />
@@ -86,7 +86,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/bathroomsLabel"
-                android:text="@string/bathrooms"
+                android:text="@string/number_of_bathrooms"
                 app:layout_constraintBottom_toTopOf="@id/bathroomsStats"
                 app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
                 app:layout_constraintTop_toTopOf="@id/bathroomsIcon" />
@@ -116,7 +116,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/bedroomsLabel"
-                android:text="@string/bedrooms"
+                android:text="@string/number_of_bedrooms"
                 app:layout_constraintBottom_toTopOf="@id/bedroomsStats"
                 app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
                 app:layout_constraintTop_toTopOf="@id/bedroomsIcon" />
