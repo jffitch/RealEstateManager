@@ -5,17 +5,17 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/main">
     <fragment android:id="@+id/add"
-        android:name="com.mathgeniusguide.realestatemanager.ui.AddFragment"
+        android:name="com.mathgeniusguide.realestatemanager.ui.AddHouseFragment"
         android:label="@string/add_a_house"
         tools:layout="@layout/add_fragment">
     </fragment>
     <fragment android:id="@+id/edit"
-        android:name="com.mathgeniusguide.realestatemanager.ui.EditFragment"
+        android:name="com.mathgeniusguide.realestatemanager.ui.EditHouseFragment"
         android:label="@string/edit"
         tools:layout="@layout/edit_fragment">
     </fragment>
     <fragment android:id="@+id/search"
-        android:name="com.mathgeniusguide.realestatemanager.ui.SearchFragment"
+        android:name="com.mathgeniusguide.realestatemanager.ui.SearchHousesFragment"
         android:label="@string/search_houses"
         tools:layout="@layout/search_fragment">
     </fragment>

@@ -33,7 +33,7 @@
     <string name="no_images_added_yet">No images added yet.</string>
     <string name="room">Room</string>
     <string name="url">URL</string>
-
+    <string name="fields_empty">Please fill in all fields.</string>
 
     <!--House Types-->
     <string name="house">House</string>
