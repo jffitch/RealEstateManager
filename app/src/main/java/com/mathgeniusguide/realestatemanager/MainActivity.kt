@@ -1,17 +1,18 @@
 package com.mathgeniusguide.realestatemanager
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.LiveData
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.mathgeniusguide.realestatemanager.objects.HouseItem
 import com.mathgeniusguide.realestatemanager.utils.Constants
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     val TAG = "Real Estate Manager"
     lateinit var navController: NavController
     val firebaseLoaded = MutableLiveData<Boolean>()
+    private lateinit var auth: FirebaseAuth
+    val ANONYMOUS = "anonymous"
+    var username = ANONYMOUS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         firebaseLoaded.value = false
         database = FirebaseDatabase.getInstance().reference
         database.orderByKey().addListenerForSingleValueEvent(itemListener)
+
+        auth = FirebaseAuth.getInstance()
+        login(auth.currentUser)
     }
 
     var itemListener: ValueEventListener = object : ValueEventListener {
@@ -80,4 +87,48 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
+    fun login(user: FirebaseUser?) {
+        if (user != null) {
+            username = user.email ?: ANONYMOUS
+            navController.navigate(R.id.action_login)
+        } else {
+            username = ANONYMOUS
+        }
+    }
+
+    fun newUser(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "createUserWithEmail:success")
+                        val user = auth.currentUser
+                        login(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                        login(null)
+                    }
+                }
+    }
+
+    fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success")
+                        val user = auth.currentUser
+                        login(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                        login(null)
+                    }
+                }
+    }
 }

@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Real Estate Manager</string>
 
+    <!--Login Screen-->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_account">New Account</string>
+
     <!--Main Screen Details-->
     <string name="surface_area">Surface Area</string>
     <string name="number_of_rooms">Number of Rooms</string>
