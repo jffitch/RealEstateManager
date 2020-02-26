@@ -10,11 +10,13 @@ import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.Constants
-import com.mathgeniusguide.realestatemanager.utils.Functions.createHouse
+import com.mathgeniusguide.realestatemanager.utils.FirebaseFunctions.createHouse
 import com.mathgeniusguide.realestatemanager.utils.Functions.fullLocation
 import com.mathgeniusguide.realestatemanager.utils.toFirebaseList
 import com.mathgeniusguide.realestatemanager.utils.toTextList
 import kotlinx.android.synthetic.main.add_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddHouseFragment : Fragment() {
     val imageList = emptyList<MediaImage>().toMutableList()
@@ -46,17 +48,22 @@ class AddHouseFragment : Fragment() {
                     R.id.penthouse -> Constants.PENTHOUSE
                     else -> 0
                 }
+                val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                val date = sdf.format(Date())
                 createHouse(
                         database = act.database,
+                        agent = "",
                         area = areaField.text.toString().toInt(),
                         bathrooms = bathField.text.toString().toInt(),
                         bedrooms = bedField.text.toString().toInt(),
                         borough = boroughField.text.toString(),
                         description = descriptionField.text.toString(),
                         images = imageList.toFirebaseList(),
+                        listDate = date,
                         location = fullLocation(addressField.text.toString(), cityField.text.toString(), zipField.text.toString()),
                         price = priceField.text.toString().toInt(),
                         rooms = roomsField.text.toString().toInt(),
+                        saleDate = "",
                         type = type
                 )
             } else {

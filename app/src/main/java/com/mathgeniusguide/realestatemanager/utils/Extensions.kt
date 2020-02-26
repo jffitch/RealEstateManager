@@ -37,3 +37,11 @@ fun MutableList<MediaImage>.toTextList(): String {
 fun MutableList<MediaImage>.toFirebaseList(): String {
     return this.map {"${it.room}|${it.url}"}.joinToString("||")
 }
+
+fun String.toAPI(width: Int, height: Int, zoom: Int): String {
+    //https://maps.googleapis.com/maps/api/staticmap?center=144-85+37th+Avenue,Flushing,NY&zoom=16&size=200x200&maptype=roadmap&key=AIzaSyDMWYwVXRhuhSQ5vcom9iAI2-FH6T6QKDI&markers=color:red%7C144-85+37th+Avenue,Flushing,NY
+    //144-85 37th Avenue|Flushing, NY 11354|United States
+    //144-85 37th Avenue,Flushing, NY
+    val address =  this.replace("|United States", "").replace("|", ",")
+    return "${Constants.STATIC_MAPS}?center=${address}&zoom=${zoom}&size=${width}x${height}&maptype=roadmap&markers=color:red%7C${address}&key=${Constants.API_KEY}"
+}

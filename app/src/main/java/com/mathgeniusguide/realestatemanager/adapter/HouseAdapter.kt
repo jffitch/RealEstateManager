@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.objects.HouseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
+import com.mathgeniusguide.realestatemanager.utils.toAPI
 import com.mathgeniusguide.realestatemanager.utils.toHouseType
 import com.mathgeniusguide.realestatemanager.utils.toMediaImage
 import kotlinx.android.synthetic.main.house_item.view.*
@@ -23,7 +25,8 @@ class HouseAdapter(private val items: ArrayList<HouseItem>,
                    val bedroomsStats: TextView,
                    val locationStats: TextView,
                    val descriptionText: TextView,
-                   val imageList: RecyclerView) : RecyclerView.Adapter<HouseAdapter.ViewHolder>() {
+                   val imageList: RecyclerView,
+                   val googleMap: ImageView) : RecyclerView.Adapter<HouseAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return items.size
     }
@@ -51,6 +54,7 @@ class HouseAdapter(private val items: ArrayList<HouseItem>,
             descriptionText.text = i.description
             imageList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             imageList.adapter = MediaAdapter(images as ArrayList<MediaImage>, context)
+            Glide.with(context).load(i.location!!.toAPI(250,250,15)).into(googleMap)
         }
     }
 

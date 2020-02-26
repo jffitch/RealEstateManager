@@ -33,12 +33,12 @@ class MainFragment: Fragment() {
         houseList.layoutManager = LinearLayoutManager(context)
 
         if (act.firebaseLoaded.value!!) {
-            houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList)
+            houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
         }
 
         act.firebaseLoaded.observe(viewLifecycleOwner, Observer {
             if (it != null && it) {
-                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList)
+                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
             }
         })
     }
