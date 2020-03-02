@@ -52,4 +52,56 @@
         <item name="android:textSize">15sp</item>
         <item name="android:paddingBottom">10dp</item>
     </style>
+    <style name="search_fragment_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="search_fragment_edittext">
+        <item name="android:layout_width">246dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="search_fragment_edittext_price">
+        <item name="android:layout_width">102dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">8</item>
+    </style>
+    <style name="search_fragment_edittext_area">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">4</item>
+    </style>
+    <style name="search_fragment_edittext_rooms">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">2</item>
+    </style>
+    <style name="search_fragment_edittext_date">
+        <item name="android:layout_width">126dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:maxLength">10</item>
+    </style>
+    <style name="search_fragment_rg">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
 </resources>

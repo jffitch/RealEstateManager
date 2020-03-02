@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/priceLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/price_from_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/priceMinField"
+            style="@style/search_fragment_edittext_price"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/priceLabel"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/priceTo"
+            android:text="@string/to_dollars"
+            app:layout_constraintStart_toEndOf="@id/priceMinField"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
+
+        <EditText
+            android:id="@+id/priceMaxField"
+            style="@style/search_fragment_edittext_price"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/priceTo"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
+
+        <TextView
+            android:id="@+id/typeLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/house_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/priceLabel" />
+
+        <RadioGroup
+            style="@style/search_fragment_rg"
+            android:id="@+id/typeRG"
+            app:layout_constraintStart_toEndOf="@id/typeLabel"
+            app:layout_constraintBottom_toBottomOf="@id/typeLabel">
+
+            <RadioButton
+                android:id="@+id/anyType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/house" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flat" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/duplex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duplex" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/penthouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/penthouse" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/areaLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/area_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeLabel" />
+
+        <EditText
+            android:id="@+id/areaMinField"
+            style="@style/search_fragment_edittext_area"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/areaLabel"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/areaTo"
+            android:text="@string/sq_m_to"
+            app:layout_constraintStart_toEndOf="@id/areaMinField"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
+
+        <EditText
+            android:id="@+id/areaMaxField"
+            style="@style/search_fragment_edittext_area"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/areaTo"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/areaUnitLabel"
+            android:text="@string/sq_m"
+            app:layout_constraintStart_toEndOf="@id/areaMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
+
+        <TextView
+            android:id="@+id/roomsLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/rooms_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/areaLabel" />
+
+        <EditText
+            android:id="@+id/roomsMinField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/roomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/roomsTo"
+            android:text="@string/to"
+            app:layout_constraintStart_toEndOf="@id/roomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
+
+        <EditText
+            android:id="@+id/roomsMaxField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/roomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
+
+        <TextView
+            android:id="@+id/bathroomsLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/bathrooms_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/roomsLabel" />
+
+        <EditText
+            android:id="@+id/bathroomsMinField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/bathroomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/bathroomsTo"
+            android:text="@string/to"
+            app:layout_constraintStart_toEndOf="@id/bathroomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
+
+        <EditText
+            android:id="@+id/bathroomsMaxField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/bathroomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
+
+        <TextView
+            android:id="@+id/bedroomsLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/bedrooms_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bathroomsLabel" />
+
+        <EditText
+            android:id="@+id/bedroomsMinField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/bedroomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/bedroomsTo"
+            android:text="@string/to"
+            app:layout_constraintStart_toEndOf="@id/bedroomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
+
+        <EditText
+            android:id="@+id/bedroomsMaxField"
+            style="@style/search_fragment_edittext_rooms"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/bedroomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
+
+        <TextView
+            android:id="@+id/boroughLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/borough"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bedroomsLabel" />
+
+        <EditText
+            android:id="@+id/boroughField"
+            style="@style/search_fragment_edittext"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/boroughLabel"
+            app:layout_constraintBottom_toBottomOf="@id/boroughLabel" />
+
+        <TextView
+            android:id="@+id/locationLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boroughLabel" />
+
+        <EditText
+            android:id="@+id/locationField"
+            style="@style/search_fragment_edittext"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/locationLabel"
+            app:layout_constraintBottom_toBottomOf="@id/locationLabel" />
+
+        <TextView
+            android:id="@+id/agentLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/agent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        <EditText
+            android:id="@+id/agentField"
+            style="@style/search_fragment_edittext"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/agentLabel"
+            app:layout_constraintBottom_toBottomOf="@id/agentLabel" />
+
+        <TextView
+            android:id="@+id/listDateLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/list_date_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/agentLabel" />
+
+        <EditText
+            android:id="@+id/listDateMinField"
+            style="@style/search_fragment_edittext_date"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/listDateLabel"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/listDateTo"
+            android:text="@string/to"
+            app:layout_constraintStart_toEndOf="@id/listDateMinField"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
+
+        <EditText
+            android:id="@+id/listDateMaxField"
+            style="@style/search_fragment_edittext_date"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/listDateTo"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
+
+        <TextView
+            android:id="@+id/soldLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/sold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listDateLabel" />
+
+        <RadioGroup
+            style="@style/search_fragment_rg"
+            android:id="@+id/soldRG"
+            app:layout_constraintStart_toEndOf="@id/soldLabel"
+            app:layout_constraintBottom_toBottomOf="@id/soldLabel">
+
+            <RadioButton
+                android:id="@+id/anySold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/trueSold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sold" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/falseSold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/not_sold" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/saleDateLabel"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/sale_date_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/soldLabel" />
+
+        <EditText
+            android:id="@+id/saleDateMinField"
+            style="@style/search_fragment_edittext_date"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/saleDateLabel"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
+
+        <TextView
+            style="@style/search_fragment_label"
+            android:id="@+id/saleDateTo"
+            android:text="@string/to"
+            app:layout_constraintStart_toEndOf="@id/saleDateMinField"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
+
+        <EditText
+            android:id="@+id/saleDateMaxField"
+            style="@style/search_fragment_edittext_date"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@id/saleDateTo"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
+
+        <Button
+            android:id="@+id/searchButton"
+            style="@style/search_fragment_label"
+            android:layout_marginTop="10dp"
+            android:text="@string/search_houses"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saleDateLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <!-- Code Generator
+
+    priceLabel, tvb25, ww, pm10,, pm10
+    priceMinField, et25, 150, w, 0*,, 0m10
+    priceTo, tvb25, ww, 0*,, 1m10
+    priceMaxField, et25, 150, w, 0*,, 2m10
+    typeLabel, tvb25, ww, 0m10,, pm10
+    typeRG, rg, fw, 4*,, 4m10
+    areaLabel, tvb25, ww, 4m10,, pm10
+    areaMinField, et25, 150, w, 6*,, 6m10
+    areaTo, tvb25, ww, 6*,, 7m10
+    areaMaxField, et25, 150, w, 6*,, 8m10
+    roomsLabel, tvb25, ww, 6m10,, pm10
+    roomsMinField, et25, 150, w, 10*,, 10m10
+    roomsTo, tvb25, ww, 10*,, 11m10
+    roomsMaxField, et25, 150, w, 10*,, 12m10
+    bathroomsLabel, tvb25, ww, 10m10,, pm10
+    bathroomsMinField, et25, 150, w, 14*,, 14m10
+    bathroomsTo, tvb25, ww, 14*,, 15m10
+    bathroomsMaxField, et25, 150, w, 14*,, 16m10
+    bedroomsLabel, tvb25, ww, 14m10,, pm10
+    bedroomsMinField, et25, 150, w, 18*,, 18m10
+    bedroomsTo, tvb25, ww, 18*,, 19m10
+    bedroomsMaxField, et25, 150, w, 18*,, 20m10
+    boroughLabel, tvb25, ww, 18m10,, pm10
+    boroughField, et25, 150, w, 22*,, 22m10
+    locationLabel, tvb25, ww, 22m10,, pm10
+    locationField, et25, 150, w, 24*,, 24m10
+    agentLabel, tvb25, ww, 24m10,, pm10
+    agentField, et25, 150, w, 26*,, 26m10
+    listDateLabel, tvb25, ww, 26m10,, pm10
+    listDateMinField, et25, 150, w, 28*,, 28m10
+    listDateTo, tvb25, ww, 28*,, 29m10
+    listDateMaxField, et25, 150, w, 28*,, 30m10
+    soldLabel, tvb25, ww, 28m10,, pm10
+    soldCheckBox, cb, ww, 32*,, 32m10
+    saleDateLabel, tvb25, ww, 32m10,, pm10
+    saleDateMinField, et25, 150, w, 34*,, 34m10
+    saleDateTo, tvb25, ww, 34*,, 35m10
+    saleDateMaxField, et25, 150, w, 34*,, 36m10
+    searchButton, bub25, ww, 34m10,, pm10
+
+    -->

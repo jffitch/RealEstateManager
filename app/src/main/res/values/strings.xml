@@ -2,8 +2,10 @@
     <string name="app_name">Real Estate Manager</string>
 
     <!--Login Screen-->
-    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="display_name">Display Name</string>
     <string name="password">Password</string>
+    <string name="reenter_password">Reenter Password</string>
     <string name="sign_in">Sign In</string>
     <string name="new_account">New Account</string>
 
@@ -17,6 +19,7 @@
     <string name="dollar_sign">$%1$s</string>
     <string name="media">Media</string>
     <string name="description">Description:</string>
+    <string name="welcome">Welcome, %1$s</string>
 
     <!--Add House Fragment-->
     <string name="address">Address</string>
@@ -52,4 +55,25 @@
     <string name="edit">edit</string>
     <string name="main">main</string>
     <string name="search_houses">Search Houses</string>
+    <string name="logout">Log Out</string>
+
+    <!-- Search Houses Fragment-->
+    <string name="price_from_">Price From $</string>
+    <string name="to_dollars">To $</string>
+    <string name="house_type">House Type</string>
+    <string name="any">Any</string>
+    <string name="area_from">Area From</string>
+    <string name="sq_m_to">sq m    To</string>
+    <string name="rooms_from">Rooms From</string>
+    <string name="bathrooms_from">Bathrooms From</string>
+    <string name="bedrooms_from">Bedrooms From</string>
+    <string name="agent">Agent</string>
+    <string name="list_date_from">List Date From</string>
+    <string name="sold">Sold</string>
+    <string name="not_sold">Not Sold</string>
+    <string name="sale_date_from">Sale Date From</string>
+    <string name="save">Save</string>
+    <string name="to">To</string>
+    <string name="no_search_results">No houses match your search.</string>
+
 </resources>

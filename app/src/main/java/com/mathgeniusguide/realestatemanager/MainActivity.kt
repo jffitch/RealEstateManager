@@ -7,23 +7,32 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
-import com.mathgeniusguide.realestatemanager.objects.HouseItem
+import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.Constants
+import com.mathgeniusguide.realestatemanager.utils.toHouseFirebaseItem
+import com.mathgeniusguide.realestatemanager.utils.toHouseRoomdbItem
+import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    val viewModel by lazy { ViewModelProviders.of(this).get(HousesViewModel::class.java) }
     lateinit var database: DatabaseReference
-    var houseItemList = emptyList<HouseItem>().toMutableList()
+    var houseItemList = emptyList<HouseFirebaseItem>().toMutableList()
+    var filteredHouseItemList = emptyList<HouseFirebaseItem>().toMutableList()
     val TAG = "Real Estate Manager"
     lateinit var navController: NavController
     val firebaseLoaded = MutableLiveData<Boolean>()
+    val roomdbLoaded = MutableLiveData<Boolean>()
     private lateinit var auth: FirebaseAuth
     val ANONYMOUS = "anonymous"
     var username = ANONYMOUS
@@ -37,8 +46,12 @@ class MainActivity : AppCompatActivity() {
         toolbar.setupWithNavController(navController)
 
         firebaseLoaded.value = false
+        roomdbLoaded.value = false
+
         database = FirebaseDatabase.getInstance().reference
         database.orderByKey().addListenerForSingleValueEvent(itemListener)
+        viewModel.fetchSavedHouses(this)
+        observeDatabase()
 
         auth = FirebaseAuth.getInstance()
         login(auth.currentUser)
@@ -60,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         val houses = dataSnapshot.child(Constants.HOUSES).children.iterator()
         while (houses.hasNext()) {
             val currentItem = houses.next()
-            val houseItem = HouseItem.create()
+            val houseItem = HouseFirebaseItem.create()
             val map = currentItem.getValue() as HashMap<String, Any>
             houseItem.id = currentItem.key
             houseItem.area = (map.get("area") as Long).toInt()
@@ -73,9 +86,24 @@ class MainActivity : AppCompatActivity() {
             houseItem.price = (map.get("price") as Long).toInt()
             houseItem.rooms = (map.get("rooms") as Long).toInt()
             houseItem.type = (map.get("type") as Long).toInt()
+            houseItemList = houseItemList.filter {houseItem.id != it.id}.toMutableList()
             houseItemList.add(houseItem)
+            viewModel.insertHouseItem(houseItem.toHouseRoomdbItem(), this)
         }
         firebaseLoaded.value = true
+    }
+
+    fun observeDatabase() {
+        viewModel.houseList.observe(this, Observer {
+            if (it != null) {
+                for (i in it) {
+                    if (houseItemList.none {house -> house.id == i.id}) {
+                        houseItemList.add(i.toHouseFirebaseItem())
+                    }
+                }
+                roomdbLoaded.postValue(true)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,32 +112,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (username == ANONYMOUS) {
+            return true
+        }
+        if (item.itemId == R.id.logout) {
+            login(null)
+            return true
+        }
+        if (item.itemId == R.id.main) {
+            filteredHouseItemList.clear()
+        }
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
     fun login(user: FirebaseUser?) {
         if (user != null) {
-            username = user.email ?: ANONYMOUS
+            username = user.displayName ?: ANONYMOUS
             navController.navigate(R.id.action_login)
         } else {
             username = ANONYMOUS
+            auth.signOut()
+            navController.navigate(R.id.action_logout)
         }
     }
 
-    fun newUser(email: String, password: String) {
+    fun newUser(email: String, password: String, displayName: String) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth.currentUser
+                        updateDisplayName(user, displayName)
                         login(user)
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(baseContext, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show()
-                        login(null)
                     }
                 }
     }
@@ -127,8 +167,15 @@ class MainActivity : AppCompatActivity() {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(baseContext, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show()
-                        login(null)
                     }
                 }
+    }
+
+    fun updateDisplayName(user: FirebaseUser?, displayName: String) {
+        if (user != null) {
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setDisplayName(displayName).build();
+            user.updateProfile(profileUpdates);
+        }
     }
 }

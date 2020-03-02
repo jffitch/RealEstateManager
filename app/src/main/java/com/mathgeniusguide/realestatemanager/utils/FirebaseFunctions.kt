@@ -1,12 +1,12 @@
 package com.mathgeniusguide.realestatemanager.utils
 
 import com.google.firebase.database.DatabaseReference
-import com.mathgeniusguide.realestatemanager.objects.HouseItem
+import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 
 object FirebaseFunctions {
     fun createHouse(area: Int, agent: String, bathrooms: Int, bedrooms: Int, borough: String, description: String, images: String, listDate: String, location: String, price: Int, rooms: Int, saleDate: String, type: Int, database: DatabaseReference) {
         val newItem = database.child(Constants.HOUSES).push()
-        val houseItem = HouseItem.create()
+        val houseItem = HouseFirebaseItem.create()
         houseItem.id = newItem.key
         houseItem.agent = agent
         houseItem.area = area

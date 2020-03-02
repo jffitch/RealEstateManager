@@ -1,8 +1,8 @@
-package com.mathgeniusguide.realestatemanager.objects
+package com.mathgeniusguide.realestatemanager.database
 
-class HouseItem {
+class HouseFirebaseItem {
     companion object Factory {
-        fun create(): HouseItem = HouseItem()
+        fun create(): HouseFirebaseItem = HouseFirebaseItem()
     }
     var id: String? = null
     var agent: String? = null

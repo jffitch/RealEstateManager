@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mathgeniusguide.realestatemanager.R
-import com.mathgeniusguide.realestatemanager.objects.HouseItem
+import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.toAPI
 import com.mathgeniusguide.realestatemanager.utils.toHouseType
 import com.mathgeniusguide.realestatemanager.utils.toMediaImage
 import kotlinx.android.synthetic.main.house_item.view.*
 
-class HouseAdapter(private val items: ArrayList<HouseItem>,
+class HouseAdapter(private val items: ArrayList<HouseFirebaseItem>,
                    val context: Context,
                    val surfaceStats: TextView,
                    val roomsStats: TextView,

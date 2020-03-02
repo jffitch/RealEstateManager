@@ -1,6 +1,5 @@
 package com.mathgeniusguide.realestatemanager.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.adapter.HouseAdapter
-import com.mathgeniusguide.realestatemanager.objects.HouseItem
-import com.mathgeniusguide.realestatemanager.objects.MediaImage
+import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.main_fragment_details.*
 
@@ -31,15 +29,26 @@ class MainFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         houseList.layoutManager = LinearLayoutManager(context)
+        act.title = String.format(resources.getString(R.string.welcome), act.username)
 
-        if (act.firebaseLoaded.value!!) {
-            houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
-        }
-
-        act.firebaseLoaded.observe(viewLifecycleOwner, Observer {
-            if (it != null && it) {
-                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
+        if (act.filteredHouseItemList.isEmpty()) {
+            if (act.firebaseLoaded.value!! || act.roomdbLoaded.value!!) {
+                houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseFirebaseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
             }
-        })
+
+            act.firebaseLoaded.observe(viewLifecycleOwner, Observer {
+                if (it != null && it) {
+                    houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseFirebaseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
+                }
+            })
+
+            act.roomdbLoaded.observe(viewLifecycleOwner, Observer {
+                if (it != null && it) {
+                    houseList.adapter = HouseAdapter(act.houseItemList as ArrayList<HouseFirebaseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
+                }
+            })
+        } else {
+            houseList.adapter = HouseAdapter(act.filteredHouseItemList as ArrayList<HouseFirebaseItem>, context!!, surfaceStats, roomsStats, bathroomsStats, bedroomsStats, locationStats, descriptionText, imageList, googleMap)
+        }
     }
 }

@@ -30,7 +30,11 @@
     <fragment android:id="@+id/search"
         android:name="com.mathgeniusguide.realestatemanager.ui.SearchHousesFragment"
         android:label="@string/search_houses"
-        tools:layout="@layout/search_fragment">
+        tools:layout="@layout/search_houses_fragment">
+        <action android:id="@+id/action_search_to_main"
+            app:destination="@id/main"
+            app:enterAnim="@anim/push_right_in"
+            app:exitAnim="@anim/push_right_out" />
     </fragment>
     <fragment android:id="@+id/main"
         android:name="com.mathgeniusguide.realestatemanager.ui.MainFragment"

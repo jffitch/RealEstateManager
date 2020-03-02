@@ -52,7 +52,7 @@ class AddHouseFragment : Fragment() {
                 val date = sdf.format(Date())
                 createHouse(
                         database = act.database,
-                        agent = "",
+                        agent = act.username,
                         area = areaField.text.toString().toInt(),
                         bathrooms = bathField.text.toString().toInt(),
                         bedrooms = bedField.text.toString().toInt(),

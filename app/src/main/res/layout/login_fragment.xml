@@ -1,87 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="@string/username"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:id="@+id/usernameLabel"
-        android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/usernameField"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:text=""
-        android:textSize="25sp"
-        android:id="@+id/usernameField"
-        android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/usernameLabel"
-        app:layout_constraintBottom_toTopOf="@id/passwordLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/email"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/emailField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:text="@string/password"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:id="@+id/passwordLabel"
-        android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/usernameField"
-        app:layout_constraintBottom_toTopOf="@id/passwordField"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/displayNameLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailLabel" />
 
-    <EditText
-        android:text=""
-        android:textSize="25sp"
-        android:id="@+id/passwordField"
-        android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/passwordLabel"
-        app:layout_constraintBottom_toTopOf="@id/signInButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/displayNameLabel"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text="@string/display_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/displayNameField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailField" />
 
-    <Button
-        android:text="@string/sign_in"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:id="@+id/signInButton"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/passwordField"
-        app:layout_constraintStart_toStartOf="@id/passwordField" />
+        <EditText
+            android:id="@+id/displayNameField"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/passwordLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/displayNameLabel" />
 
-    <Button
-        android:text="@string/new_account"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:id="@+id/newAccountButton"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/signInButton"
-        app:layout_constraintEnd_toEndOf="@id/passwordField" />
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/passwordField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/displayNameField" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/passwordField"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/reenterPasswordLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordLabel"
+            android:inputType="textPassword"/>
 
-<!-- code generator
+        <TextView
+            android:id="@+id/reenterPasswordLabel"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text="@string/reenter_password"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/reenterPasswordField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordField" />
 
-usernameLabel, tvb25, 450, w, sm50, c
-usernameField, et25, 450, w, m, c
-passwordLabel, tvb25, 450, w, m, c
-passwordField, et25, 450, w, m, c
-signInButton, bub25, 220, w, 3,, 3*
-newAccountButton, bub25, 220, w, 4*,,, 3*
+        <EditText
+            android:id="@+id/reenterPasswordField"
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/signInButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reenterPasswordLabel"
+            android:inputType="textPassword" />
 
--->
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/reenterPasswordField"
+            app:layout_constraintTop_toBottomOf="@id/reenterPasswordField" />
+
+        <Button
+            android:id="@+id/newAccountButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/new_account"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/reenterPasswordField"
+            app:layout_constraintTop_toTopOf="@id/signInButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <!-- code generator
+
+    emailLabel, tvb20, 450, w, sm10, c
+    emailField, et20, 450, w, m, c
+    displayNameLabel, tvb20, 450, w, m, c
+    displayNameField, et20, 450, w, m, c
+    passwordLabel, tvb20, 450, w, m, c
+    passwordField, et20, 450, w, m, c
+    reenterPasswordLabel, tvb20, 450, w, m, c
+    reenterPasswordField, et20, 450, w, m, c
+    signInButton, bub20, 220, w, 7,, 7*
+    newAccountButton, bub20, 220, w, 8*,,, 7*
+
+    -->
