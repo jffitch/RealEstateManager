@@ -24,8 +24,8 @@
     </fragment>
     <fragment android:id="@+id/edit"
         android:name="com.mathgeniusguide.realestatemanager.ui.EditHouseFragment"
-        android:label="@string/edit"
-        tools:layout="@layout/edit_fragment">
+        android:label="@string/update_a_house"
+        tools:layout="@layout/add_fragment">
     </fragment>
     <fragment android:id="@+id/search"
         android:name="com.mathgeniusguide.realestatemanager.ui.SearchHousesFragment"

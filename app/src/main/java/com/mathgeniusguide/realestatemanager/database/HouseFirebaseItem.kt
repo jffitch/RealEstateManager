@@ -12,8 +12,10 @@ class HouseFirebaseItem {
     var borough: String? = null
     var description: String? = null
     var images: String? = null
+    var latitude: Double? = null
     var listDate: String? = null
     var location: String? = null
+    var longitude: Double? = null
     var price: Int? = null
     var rooms: Int? = null
     var saleDate: String? = null

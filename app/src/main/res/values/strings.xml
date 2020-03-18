@@ -38,11 +38,10 @@
     <string name="add_image">ADD IMAGE</string>
     <string name="remove_image">REMOVE IMAGE</string>
     <string name="add_house">ADD HOUSE</string>
+    <string name="update_house">UPDATE HOUSE</string>
     <string name="images">Images</string>
-    <string name="no_images_added_yet">No images added yet.</string>
     <string name="room">Room</string>
     <string name="url">URL</string>
-    <string name="fields_empty">Please fill in all fields.</string>
 
     <!--House Types-->
     <string name="house">House</string>
@@ -50,12 +49,15 @@
     <string name="duplex">Duplex</string>
     <string name="penthouse">Penthouse</string>
 
-    <!--Fragment Names-->
+    <!--Icons-->
     <string name="add_a_house">Add A House</string>
-    <string name="edit">edit</string>
+    <string name="update_a_house">Update A House</string>
     <string name="main">main</string>
     <string name="search_houses">Search Houses</string>
     <string name="logout">Log Out</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+    <string name="instructions">Instructions</string>
 
     <!-- Search Houses Fragment-->
     <string name="price_from_">Price From $</string>
@@ -74,6 +76,14 @@
     <string name="sale_date_from">Sale Date From</string>
     <string name="save">Save</string>
     <string name="to">To</string>
-    <string name="no_search_results">No houses match your search.</string>
 
+    <!-- Map Fragment -->
+    <string name="you_are_here">You Are Here</string>
+
+    <!-- Error Messages -->
+    <string name="no_search_results">No houses match your search.</string>
+    <string name="fields_empty">Please fill in all fields.</string>
+    <string name="no_images_added_yet">No images added yet.</string>
+    <string name="no_property_selected">No property selected.</string>
+    <string name="not_agent">You are not the agent in charge of this property.</string>
 </resources>

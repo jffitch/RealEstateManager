@@ -24,7 +24,7 @@ object FirebaseFunctions {
         newItem.setValue(houseItem)
     }
 
-    fun updateHouse(itemKey: String, area: Int, agent: String, bathrooms: Int, bedrooms: Int, borough: String, description: String, images: String, listDate: String, location: String, price: Int, rooms: Int, saleDate: String, type: Int, database: DatabaseReference) {
+    fun updateHouse(itemKey: String, area: Int, agent: String, bathrooms: Int, bedrooms: Int, borough: String, description: String, images: String, latitude: Double, listDate: String, location: String, longitude: Double, price: Int, rooms: Int, saleDate: String, type: Int, database: DatabaseReference) {
         val itemReference = database.child(Constants.HOUSES).child(itemKey)
         itemReference.child("agent").setValue(agent)
         itemReference.child("area").setValue(area)
@@ -33,8 +33,10 @@ object FirebaseFunctions {
         itemReference.child("borough").setValue(borough)
         itemReference.child("description").setValue(description)
         itemReference.child("images").setValue(images)
+        itemReference.child("latitude").setValue(latitude)
         itemReference.child("listDate").setValue(listDate)
         itemReference.child("location").setValue(location)
+        itemReference.child("longitude").setValue(longitude)
         itemReference.child("price").setValue(price)
         itemReference.child("rooms").setValue(rooms)
         itemReference.child("saleDate").setValue(saleDate)

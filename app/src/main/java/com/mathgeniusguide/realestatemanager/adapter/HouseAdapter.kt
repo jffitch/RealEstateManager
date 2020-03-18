@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.house_item.view.*
 
 class HouseAdapter(private val items: ArrayList<HouseFirebaseItem>,
                    val context: Context,
+                   val act: MainActivity,
                    val surfaceStats: TextView,
                    val roomsStats: TextView,
                    val bathroomsStats: TextView,
@@ -41,11 +43,11 @@ class HouseAdapter(private val items: ArrayList<HouseFirebaseItem>,
         if (images.isNotEmpty()) {
             Glide.with(context).load(images[0].url).into(holder.houseImage)
         }
-        holder.houseImage.visibility = if (true) View.VISIBLE else View.GONE
         holder.houseType.text = i.type!!.toHouseType(context.resources)
         holder.houseLocation.text = i.borough
         holder.housePrice.text = String.format(context.resources.getString(R.string.dollar_sign), "%,d".format(i.price))
         holder.parent.setOnClickListener {
+            act.houseSelected = i.id ?: ""
             surfaceStats.text = String.format(context.resources.getString(R.string.number_sq_m), i.area)
             roomsStats.text = i.rooms.toString()
             bathroomsStats.text = i.bathrooms.toString()

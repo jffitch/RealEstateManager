@@ -6,13 +6,18 @@
         android:icon="@drawable/home"
         app:showAsAction="always" />
     <item
+        android:id="@+id/map"
+        android:title="@string/map"
+        android:icon="@drawable/map"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/add"
         android:title="@string/add_a_house"
         android:icon="@drawable/add"
         app:showAsAction="always" />
     <item
         android:id="@+id/edit"
-        android:title="@string/edit"
+        android:title="@string/update_a_house"
         android:icon="@drawable/edit"
         app:showAsAction="always" />
     <item
@@ -25,4 +30,12 @@
         android:title="@string/logout"
         android:icon="@drawable/logout"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/instructions"
+        android:title="@string/instructions"
+        app:showAsAction="never" />
 </menu>

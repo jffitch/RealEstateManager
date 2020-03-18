@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.maps.model.Marker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val ANONYMOUS = "anonymous"
     var username = ANONYMOUS
+    var houseSelected = ""
+    val markerList = emptyList<Marker?>().toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,15 +79,18 @@ class MainActivity : AppCompatActivity() {
             val houseItem = HouseFirebaseItem.create()
             val map = currentItem.getValue() as HashMap<String, Any>
             houseItem.id = currentItem.key
+            houseItem.agent = map.get("agent") as String?
             houseItem.area = (map.get("area") as Long).toInt()
             houseItem.bathrooms = (map.get("bathrooms") as Long).toInt()
             houseItem.bedrooms = (map.get("bedrooms") as Long).toInt()
             houseItem.borough = map.get("borough") as String?
             houseItem.description = map.get("description") as String?
             houseItem.images = map.get("images") as String?
+            houseItem.listDate = map.get("listDate") as String?
             houseItem.location = map.get("location") as String?
             houseItem.price = (map.get("price") as Long).toInt()
             houseItem.rooms = (map.get("rooms") as Long).toInt()
+            houseItem.saleDate = map.get("saleDate") as String?
             houseItem.type = (map.get("type") as Long).toInt()
             houseItemList = houseItemList.filter {houseItem.id != it.id}.toMutableList()
             houseItemList.add(houseItem)
@@ -118,6 +124,16 @@ class MainActivity : AppCompatActivity() {
         if (item.itemId == R.id.logout) {
             login(null)
             return true
+        }
+        if (item.itemId == R.id.edit) {
+            if (houseSelected.isEmpty() || houseItemList.none { it.id == houseSelected }) {
+                Toast.makeText(this, resources.getString(R.string.no_property_selected), Toast.LENGTH_LONG).show()
+                return true
+            }
+            if (houseItemList.first { it.id == houseSelected }.agent != username) {
+                Toast.makeText(this, resources.getString(R.string.not_agent), Toast.LENGTH_LONG).show()
+                return true
+            }
         }
         if (item.itemId == R.id.main) {
             filteredHouseItemList.clear()
