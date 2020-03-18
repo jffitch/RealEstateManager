@@ -1,19 +1,25 @@
 package com.mathgeniusguide.realestatemanager.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.*
+import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
 import kotlinx.android.synthetic.main.add_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditHouseFragment: Fragment() {
+    val viewModel by lazy { ViewModelProviders.of(activity as MainActivity).get(HousesViewModel::class.java) }
     var imageList = emptyList<MediaImage>().toMutableList()
     lateinit var act: MainActivity
     lateinit var houseItem: HouseFirebaseItem
@@ -65,31 +71,32 @@ class EditHouseFragment: Fragment() {
     fun setUpButtons() {
         addHouseButton.text = resources.getString(R.string.update_house)
         addHouseButton.setOnClickListener {
+            Log.d("Real Estate Manager", "Update House Button Clicked")
             if (arrayOf(areaField, bathField, bedField, boroughField, addressField, cityField, zipField, priceField, roomsField).all { it.text.isNotEmpty() }) {
-                val type = when (typeField.checkedRadioButtonId) {
+                Log.d("Real Estate Manager", "Update House Button Code Run")
+                val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                val house = HouseFirebaseItem()
+                house.id = houseItem.id
+                house.agent = act.username
+                house.area = areaField.text.toString().toInt()
+                house.bathrooms = bathField.text.toString().toInt()
+                house.bedrooms = bedField.text.toString().toInt()
+                house.borough = boroughField.text.toString()
+                house.description = descriptionField.text.toString()
+                house.images = imageList.toFirebaseList()
+                house.listDate = houseItem.listDate
+                house.location = Functions.fullLocation(addressField.text.toString(), cityField.text.toString(), zipField.text.toString())
+                house.price = priceField.text.toString().toInt()
+                house.rooms = roomsField.text.toString().toInt()
+                house.saleDate = ""
+                house.type = when (typeField.checkedRadioButtonId) {
                     R.id.house -> Constants.HOUSE
                     R.id.flat -> Constants.FLAT
                     R.id.duplex -> Constants.DUPLEX
                     R.id.penthouse -> Constants.PENTHOUSE
                     else -> 0
                 }
-                FirebaseFunctions.updateHouse(
-                        itemKey = act.houseSelected,
-                        database = act.database,
-                        agent = act.username,
-                        area = areaField.text.toString().toInt(),
-                        bathrooms = bathField.text.toString().toInt(),
-                        bedrooms = bedField.text.toString().toInt(),
-                        borough = boroughField.text.toString(),
-                        description = descriptionField.text.toString(),
-                        images = imageList.toFirebaseList(),
-                        listDate = houseItem.listDate ?: "",
-                        location = Functions.fullLocation(addressField.text.toString(), cityField.text.toString(), zipField.text.toString()),
-                        price = priceField.text.toString().toInt(),
-                        rooms = roomsField.text.toString().toInt(),
-                        saleDate = "",
-                        type = type
-                )
+                viewModel.fetchHouseCoordinates(house, false)
             } else {
                 Toast.makeText(context, resources.getString(R.string.fields_empty), Toast.LENGTH_LONG).show()
             }

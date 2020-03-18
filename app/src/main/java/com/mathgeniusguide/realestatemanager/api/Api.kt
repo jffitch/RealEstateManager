@@ -1,6 +1,7 @@
 package com.mathgeniusguide.realestatemanager.api
 
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
+import com.mathgeniusguide.realestatemanager.responses.GeocodeResponse
 import com.mathgeniusguide.realestatemanager.utils.ConnectivityInterceptor
 import com.mathgeniusguide.realestatemanager.utils.Constants
 import com.squareup.moshi.Moshi
@@ -27,7 +28,7 @@ interface Api {
                 val url = chain.request()
                         .url()
                         .newBuilder()
-                        .addQueryParameter("api-key", Constants.API_KEY)
+                        .addQueryParameter("key", Constants.API_KEY)
                         .build()
                 val request = chain.request()
                         .newBuilder()

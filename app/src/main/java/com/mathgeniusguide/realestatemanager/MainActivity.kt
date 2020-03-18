@@ -20,6 +20,8 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.Constants
+import com.mathgeniusguide.realestatemanager.utils.FirebaseFunctions.createHouse
+import com.mathgeniusguide.realestatemanager.utils.FirebaseFunctions.updateHouse
 import com.mathgeniusguide.realestatemanager.utils.toHouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.toHouseRoomdbItem
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         login(auth.currentUser)
+        observeCoordinates()
     }
 
     var itemListener: ValueEventListener = object : ValueEventListener {
@@ -108,6 +111,21 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 roomdbLoaded.postValue(true)
+            }
+        })
+    }
+
+    fun observeCoordinates() {
+        viewModel.newHouseWithCoordinates?.observe(this, Observer {
+            if (it != null) {
+                Log.d(TAG, "House Added")
+                createHouse(it, database)
+            }
+        })
+        viewModel.updatedHouseWithCoordinates?.observe(this, Observer {
+            if (it != null) {
+                Log.d(TAG, "House Updated")
+                updateHouse(it, database)
             }
         })
     }

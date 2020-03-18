@@ -2,6 +2,8 @@ package com.mathgeniusguide.realestatemanager.viewModel
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,11 +22,25 @@ import kotlinx.coroutines.launch
 
 class HousesViewModel(application: Application) : AndroidViewModel(application) {
     // declare MutableLiveData variables for use in this class
+    private val _newHouseWithCoordinates: MutableLiveData<HouseFirebaseItem?>? = MutableLiveData()
+    private val _updatedHouseWithCoordinates: MutableLiveData<HouseFirebaseItem?>? = MutableLiveData()
     private val _houseList = MutableLiveData<List<HouseRoomdbItem>>()
+    private val _isDataLoading = MutableLiveData<Boolean>()
+    private val _isDataLoadingError = MutableLiveData<Boolean>()
+
 
     // declare LiveData variables for observing in other classes
+    val newHouseWithCoordinates: LiveData<HouseFirebaseItem?>?
+        get() = _newHouseWithCoordinates
+    val updatedHouseWithCoordinates: LiveData<HouseFirebaseItem?>?
+        get() = _updatedHouseWithCoordinates
     val houseList: LiveData<List<HouseRoomdbItem>>
         get() = _houseList
+    val isDataLoading: LiveData<Boolean>
+        get() = _isDataLoading
+    val isDataLoadingError: LiveData<Boolean>
+        get() = _isDataLoadingError
+
 
     // Room Database
     private var db: HouseDatabase? = null
@@ -54,26 +70,28 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    // declare MutableLiveData variables for use in this class
-    private val _houseItemWithCoordinates: MutableLiveData<HouseFirebaseItem?>? = MutableLiveData()
-    private val _isDataLoading = MutableLiveData<Boolean>()
-    private val _isDataLoadingError = MutableLiveData<Boolean>()
-
-    // declare LiveData variables for observing in other classes
-    val houseItemWithCoordinates: LiveData<HouseFirebaseItem?>?
-        get() = _houseItemWithCoordinates
-    val isDataLoading: LiveData<Boolean>
-        get() = _isDataLoading
-    val isDataLoadingError: LiveData<Boolean>
-        get() = _isDataLoadingError
-
-    // fetch variables
-    fun fetchHouseItemWithCoordinates(house: HouseFirebaseItem) {
+    // fetch coordinates for house address, then create or update on firebase
+    fun fetchHouseCoordinates(house: HouseFirebaseItem, isNew: Boolean) {
         val connectivityInterceptor = ConnectivityInterceptor(getApplication())
         _isDataLoading.value = true
         viewModelScope.launch {
             try {
-                _houseItemWithCoordinates?.postValue(Api.invoke(connectivityInterceptor).getHouseItemWithCoordinates(house.location ?: "").body())
+                Log.d("Real Estate Manager", "ViewModel Function Run")
+                val response = Api.invoke(connectivityInterceptor).getHouseItemWithCoordinates(house.location ?: "").body()
+                val result = response?.results
+                if (!result.isNullOrEmpty()) {
+                    val location = result[0].geometry.location
+                    Log.d("Real Estate Manager", "ViewModel Result Not Empty")
+                    house.latitude = location.lat
+                    house.longitude = location.lng
+                    if (isNew) {
+                        _newHouseWithCoordinates?.postValue(house)
+                    } else {
+                        _updatedHouseWithCoordinates?.postValue(house)
+                    }
+                } else {
+                    Toast.makeText(getApplication(), "Invalid Address", Toast.LENGTH_LONG).show()
+                }
                 _isDataLoading.postValue(false)
                 _isDataLoadingError.postValue(false)
             } catch (e: NoConnectivityException) {
