@@ -89,14 +89,18 @@ class MainActivity : AppCompatActivity() {
             houseItem.borough = map.get("borough") as String?
             houseItem.description = map.get("description") as String?
             houseItem.images = map.get("images") as String?
+            houseItem.latitude = map.get("latitude") as Double?
             houseItem.listDate = map.get("listDate") as String?
             houseItem.location = map.get("location") as String?
+            houseItem.longitude = map.get("longitude") as Double?
             houseItem.price = (map.get("price") as Long).toInt()
             houseItem.rooms = (map.get("rooms") as Long).toInt()
             houseItem.saleDate = map.get("saleDate") as String?
             houseItem.type = (map.get("type") as Long).toInt()
+            // if house with that ID already exists, remove it and replace with new house
             houseItemList = houseItemList.filter {houseItem.id != it.id}.toMutableList()
             houseItemList.add(houseItem)
+            // for each house loaded from Firebase, add to Room Database
             viewModel.insertHouseItem(houseItem.toHouseRoomdbItem(), this)
         }
         firebaseLoaded.value = true
@@ -117,12 +121,14 @@ class MainActivity : AppCompatActivity() {
 
     fun observeCoordinates() {
         viewModel.newHouseWithCoordinates?.observe(this, Observer {
+            // whenever house is posted here, create house in Firebase
             if (it != null) {
                 Log.d(TAG, "House Added")
                 createHouse(it, database)
             }
         })
         viewModel.updatedHouseWithCoordinates?.observe(this, Observer {
+            // whenever house is posted here, update house in Firebase
             if (it != null) {
                 Log.d(TAG, "House Updated")
                 updateHouse(it, database)
@@ -136,13 +142,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (username == ANONYMOUS) {
+        // if user is not logged in, only login screen and instructions screen should be accessible
+        if (username == ANONYMOUS && item.itemId != R.id.instructions && item.itemId != R.id.main) {
             return true
         }
+        // if logout button is clicked, log out
         if (item.itemId == R.id.logout) {
             login(null)
             return true
         }
+        // if edit button is clicked, edit screen should only be accessible if a property is selected and if the user is the agent who added that property
         if (item.itemId == R.id.edit) {
             if (houseSelected.isEmpty() || houseItemList.none { it.id == houseSelected }) {
                 Toast.makeText(this, resources.getString(R.string.no_property_selected), Toast.LENGTH_LONG).show()
@@ -153,13 +162,23 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         }
+        // if main button is clicked, go to login screen if user is not logged in
+        // if user is logged in, clear houseSelected and filteredHouseItemList to show defaults
         if (item.itemId == R.id.main) {
+            if (username == ANONYMOUS) {
+                navController.navigate(R.id.action_logout)
+                return true
+            }
+            houseSelected = ""
             filteredHouseItemList.clear()
         }
+        // otherwise, load target fragment as normal
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
     fun login(user: FirebaseUser?) {
+        // login(null) logs out
+        // login(user) logs in that user
         if (user != null) {
             username = user.displayName ?: ANONYMOUS
             navController.navigate(R.id.action_login)

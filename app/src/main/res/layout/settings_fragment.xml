@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/settings_fragment_label"
+        android:text="@string/use_actual_location"
+        android:id="@+id/useLocationLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <CheckBox
+        android:id="@+id/useLocationCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/useLocationLabel"
+        app:layout_constraintStart_toEndOf="@id/useLocationLabel"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        style="@style/settings_fragment_label"
+        android:text="@string/latitude"
+        android:id="@+id/latitudeLabel"
+        app:layout_constraintTop_toBottomOf="@id/useLocationLabel"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        style="@style/settings_fragment_edittext"
+        android:text=""
+        android:id="@+id/latitudeField"
+        app:layout_constraintBottom_toBottomOf="@id/latitudeLabel"
+        app:layout_constraintStart_toEndOf="@id/latitudeLabel" />
+
+    <TextView
+        style="@style/settings_fragment_label"
+        android:text="@string/longitude"
+        android:id="@+id/longitudeLabel"
+        app:layout_constraintTop_toBottomOf="@id/latitudeLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        style="@style/settings_fragment_edittext"
+        android:text=""
+        android:id="@+id/longitudeField"
+        app:layout_constraintBottom_toBottomOf="@id/longitudeLabel"
+        app:layout_constraintStart_toEndOf="@id/longitudeLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- code generator
+
+useSensorLabel, tvb25, ww, tm25, lm25
+useSensorCheckBox, cb, ww, x-1*,, x-1m10
+latitudeLabel, tvb25, ww, x-2m10,, lm25
+latitudeField, et25, 200, w,, x-1*, x-1m10
+longitudeLabel, tvb25, ww, x-2m10,, lm25
+longitudeField, et25, 200, w,, x-1*, x-1m10
+
+-->

@@ -1,15 +1,11 @@
 package com.mathgeniusguide.realestatemanager.ui
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -20,10 +16,10 @@ import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.Constants
 import com.mathgeniusguide.realestatemanager.utils.toHouseType
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_fragment.*
-import java.util.*
 
-class MapFragment: Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment(), OnMapReadyCallback {
     var googleMap: GoogleMap? = null
     // set latitude and longitude to impossible values as placeholders
     var latitude = 91.0
@@ -37,9 +33,9 @@ class MapFragment: Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // declare activity shorthand variable
         act = activity as MainActivity
-        // toolbar visible and back arrow as drawer icon
+        act.toolbar.visibility = View.VISIBLE
+        act.toolbar.navigationIcon = null
         map?.onCreate(null)
         map?.onResume()
         map?.getMapAsync(this)
@@ -47,14 +43,17 @@ class MapFragment: Fragment(), OnMapReadyCallback {
 
     // create markers for Google map
     fun getMarkers(list: List<HouseFirebaseItem>) {
+        // add marker to map for each house in list
+        // save marker to markerList
         var coord: LatLng? = null
         var title = ""
         var pos: CameraPosition? = null
         var marker: Marker?
         for (house in list) {
             coord = LatLng(house.latitude ?: 0.0, house.longitude ?: 0.0)
-            title = "${(house.type ?: Constants.HOUSE).toHouseType(resources)}: ${String.format(resources.getString(R.string.dollar_sign), "%,d".format(house.price))}"
-            marker = googleMap?.addMarker(MarkerOptions().position(coord).title(title))
+            title = "${(house.type
+                    ?: Constants.HOUSE).toHouseType(resources)}: ${String.format(resources.getString(R.string.dollar_sign), "%,d".format(house.price))}"
+            marker = googleMap?.addMarker(MarkerOptions().position(coord).title(title).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
             act.markerList.add(marker)
         }
     }
@@ -64,13 +63,19 @@ class MapFragment: Fragment(), OnMapReadyCallback {
         MapsInitializer.initialize(context)
         googleMap = p0
         getMarkers(act.houseItemList)
-        setLocation(40.7128, 74.0060)
-        googleMap?.setOnInfoWindowClickListener {marker->
-            // marker clicked
+        setLocation(40.7128, -74.0060)
+        googleMap?.setOnInfoWindowClickListener { marker ->
+            // when marker clicked, go to Main fragment and show info for clicked house
+            val lat = marker.position.latitude
+            val lng = marker.position.longitude
+            act.houseSelected = if (act.houseItemList.any { it.latitude == lat && it.longitude == lng })
+                act.houseItemList.first { it.latitude == lat && it.longitude == lng }.id ?: ""
+            else ""
+            findNavController().navigate(R.id.action_map_click)
         }
     }
 
-    // if location sensor has retrieved both latitude and longitude values, go to location on map
+    // set location center on map
     fun setLocation(lat: Double, lng: Double) {
         if (lat != 91.0 && lng != 181.0) {
             val coord = LatLng(lat, lng)
@@ -78,7 +83,7 @@ class MapFragment: Fragment(), OnMapReadyCallback {
                 this.mapType = GoogleMap.MAP_TYPE_NORMAL
                 this.addMarker(MarkerOptions().position(coord).title(resources.getString(R.string.you_are_here)))
                 val pos =
-                        CameraPosition.builder().target(coord).zoom(16.toFloat()).bearing(0.toFloat())
+                        CameraPosition.builder().target(coord).zoom(11.toFloat()).bearing(0.toFloat())
                                 .tilt(45.toFloat()).build()
                 this.moveCamera(CameraUpdateFactory.newCameraPosition(pos))
             }

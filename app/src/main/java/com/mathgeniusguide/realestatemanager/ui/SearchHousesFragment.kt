@@ -11,6 +11,7 @@ import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.utils.Functions.filled
 import com.mathgeniusguide.realestatemanager.utils.toHouseTypeConstant
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search_houses_fragment.*
 
 class SearchHousesFragment: Fragment() {
@@ -26,11 +27,15 @@ class SearchHousesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         act = activity as MainActivity
+        act.toolbar.visibility = View.VISIBLE
+        act.toolbar.navigationIcon = null
         searchButton.setOnClickListener {
             searchButtonClicked()
         }
     }
     fun searchButtonClicked() {
+        // when search button is clicked, set filteredHouseItemList to houseItemList
+        // filter by each filled field, empty fields are ignored
         act.filteredHouseItemList = act.houseItemList
         if (filled(priceMinField)) {
             act.filteredHouseItemList = act.filteredHouseItemList.filter {it.price != null && it.price!! >= priceMinField.text.toString().toInt()}.toMutableList()
@@ -89,9 +94,13 @@ class SearchHousesFragment: Fragment() {
         if (filled(saleDateMaxField)) {
             act.filteredHouseItemList = act.filteredHouseItemList.filter {it.saleDate != null && it.saleDate!! <= saleDateMaxField.text.toString().replace(Regex("\\D"), "/")}.toMutableList()
         }
+        // if no houses match search criteria, show error message
+        // otherwise, go to Main fragment
+        // filteredHouseItemList will be loaded in Main fragment
         if (act.filteredHouseItemList.isEmpty()) {
             Toast.makeText(context, resources.getString(R.string.no_search_results), Toast.LENGTH_LONG).show()
         } else {
+            act.houseSelected = ""
             findNavController().navigate(R.id.action_search_to_main)
         }
     }

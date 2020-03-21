@@ -14,6 +14,7 @@ import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.*
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,17 +38,20 @@ class EditHouseFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         act = activity as MainActivity
+        act.toolbar.visibility = View.VISIBLE
+        act.toolbar.navigationIcon = null
         loadInfo()
         setUpButtons()
     }
 
     fun loadInfo() {
+        // load info into fields
         val houseID = act.houseSelected
         if (act.houseItemList.none { it.id == houseID }) {
+            // prevent crash if house with this ID doesn't exist
             return
         }
         houseItem = act.houseItemList.first { it.id == houseID }
-        val location = houseItem.location.splitLocation()
         imageList = (houseItem.images ?: "").toImageList()
         areaField.setText(houseItem.area.toString())
         bathField.setText(houseItem.bathrooms.toString())
@@ -63,6 +67,9 @@ class EditHouseFragment: Fragment() {
             Constants.PENTHOUSE -> R.id.penthouse
             else -> R.id.house
         })
+        // Firebase stores location as one field
+        // split into address, city, and zip fields
+        val location = houseItem.location.splitLocation()
         addressField.setText(location.address)
         cityField.setText(location.city)
         zipField.setText(location.zip)
@@ -73,6 +80,10 @@ class EditHouseFragment: Fragment() {
         addHouseButton.setOnClickListener {
             Log.d("Real Estate Manager", "Update House Button Clicked")
             if (arrayOf(areaField, bathField, bedField, boroughField, addressField, cityField, zipField, priceField, roomsField).all { it.text.isNotEmpty() }) {
+                // if required fields are filled, get information from fields and store in HouseFirebaseItem object
+                // listDate is unchanged from loaded listDate
+                // saleDate is empty
+                // fetch latitude and longitude using ViewModel function
                 Log.d("Real Estate Manager", "Update House Button Code Run")
                 val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                 val house = HouseFirebaseItem()
@@ -98,10 +109,12 @@ class EditHouseFragment: Fragment() {
                 }
                 viewModel.fetchHouseCoordinates(house, false)
             } else {
+                // if required fields are not filled, show error message
                 Toast.makeText(context, resources.getString(R.string.fields_empty), Toast.LENGTH_LONG).show()
             }
         }
         addImageButton.setOnClickListener {
+            // when Add Image is clicked, if image room and URL are filled, add image to list and update TextView
             if (imageRoomField.text.isNotEmpty() && imageUrlField.text.isNotEmpty()) {
                 val image = MediaImage()
                 image.room = imageRoomField.text.toString()
@@ -111,6 +124,7 @@ class EditHouseFragment: Fragment() {
             }
         }
         removeImageButton.setOnClickListener {
+            // when Remove Image is clicked, remove most recent image from list and update TextView
             if (imageList.isNotEmpty()) {
                 imageList.removeAt(imageList.lastIndex)
                 imagesList.text = imageList.toTextList()

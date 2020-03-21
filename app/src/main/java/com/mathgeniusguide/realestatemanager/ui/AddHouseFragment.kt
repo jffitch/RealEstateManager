@@ -17,6 +17,7 @@ import com.mathgeniusguide.realestatemanager.utils.Functions.fullLocation
 import com.mathgeniusguide.realestatemanager.utils.toFirebaseList
 import com.mathgeniusguide.realestatemanager.utils.toTextList
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,12 +40,18 @@ class AddHouseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         act = activity as MainActivity
+        act.toolbar.visibility = View.VISIBLE
+        act.toolbar.navigationIcon = null
         setUpButtons()
     }
 
     fun setUpButtons() {
         addHouseButton.setOnClickListener {
             if (arrayOf(areaField, bathField, bedField, boroughField, addressField, cityField, zipField, priceField, roomsField).all { it.text.isNotEmpty() }) {
+                // if required fields are filled, get information from fields and store in HouseFirebaseItem object
+                // listDate is today's Date
+                // saleDate is empty
+                // fetch latitude and longitude using ViewModel function
                 val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                 val house = HouseFirebaseItem()
                 house.agent = act.username
@@ -68,10 +75,12 @@ class AddHouseFragment : Fragment() {
                 }
                 viewModel.fetchHouseCoordinates(house, true)
             } else {
+                // if required fields are not filled, show error message
                 Toast.makeText(context, resources.getString(R.string.fields_empty), Toast.LENGTH_LONG).show()
             }
         }
         addImageButton.setOnClickListener {
+            // when Add Image is clicked, if image room and URL are filled, add image to list and update TextView
             if (imageRoomField.text.isNotEmpty() && imageUrlField.text.isNotEmpty()) {
                 val image = MediaImage()
                 image.room = imageRoomField.text.toString()
@@ -81,6 +90,7 @@ class AddHouseFragment : Fragment() {
             }
         }
         removeImageButton.setOnClickListener {
+            // when Remove Image is clicked, remove most recent image from list and update TextView
             if (imageList.isNotEmpty()) {
                 imageList.removeAt(imageList.lastIndex)
                 imagesList.text = imageList.toTextList()

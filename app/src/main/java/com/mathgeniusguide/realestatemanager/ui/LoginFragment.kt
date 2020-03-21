@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.utils.Functions.filled
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
@@ -28,23 +29,32 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        act.toolbar.visibility = View.VISIBLE
+        act.toolbar.navigationIcon = null
         signInButton.setOnClickListener {
+            // Sign In button clicked
+            // if email and password are filled, sign in
+            // otherwise, show error message
             if (filled(emailField, passwordField)) {
                 act.loginUser(emailField.text.toString(), passwordField.text.toString())
             } else {
-                Toast.makeText(context, "Email and Password are required.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, resources.getString(R.string.email_password_required), Toast.LENGTH_LONG).show()
             }
         }
         newAccountButton.setOnClickListener {
+            // New Account button clicked
+            // if clicked for first time, make additional fields visible
+            // otherwise, if fields are filled and passwords match, create new user
+            // if fields aren't filled or passwords don't match, show error message
             if (newAccountReady) {
                 if (filled(emailField, displayNameField, passwordField, reenterPasswordField)) {
                     if (passwordField.text.toString() == reenterPasswordField.text.toString()) {
                         act.newUser(emailField.text.toString(), passwordField.text.toString(), displayNameField.text.toString())
                     } else {
-                        Toast.makeText(context, "Passwords must match.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, resources.getString(R.string.passwords_must_match), Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(context, "Email, Display Name, Password, and Reenter Password are required.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, resources.getString(R.string.email_displayname_password_reenter_required), Toast.LENGTH_LONG).show()
                 }
             } else {
                 displayNameLabel.visibility = View.VISIBLE

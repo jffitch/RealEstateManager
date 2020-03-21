@@ -80,10 +80,55 @@
     <!-- Map Fragment -->
     <string name="you_are_here">You Are Here</string>
 
+    <!-- Settings Fragment -->
+    <string name="use_actual_location">Use Actual Location</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+
+    <!-- Instructions Fragment -->
+    <string name="login_screen">Login Screen</string>
+    <string name="login_screen_1">When you open the app, if you are not logged in, the app will open on the Login screen.</string>
+    <string name="login_screen_2">If you wish to log in as an existing user, fill out the Email and Password fields.</string>
+    <string name="login_screen_3">If you wish to log in as a new user, click New Account. Two new fields will appear (Display Name and Reenter Password). Fill out all four fields.</string>
+    <string name="login_screen_4">After logging in, the Main screen will be displayed.</string>
+    <string name="login_screen_5">Clicking the Logout icon will show the Login screen.</string>
+    <string name="main_screen">Main Screen</string>
+    <string name="main_screen_1">When you open the app, if you are logged in, the app will open on the Main screen.</string>
+    <string name="main_screen_2">Clicking the House icon will show the Main screen.</string>
+    <string name="main_screen_3">On the left of the screen, a list shows all houses that have been added to the database. Each house\'s type (House, Flat, Duplex, Penthouse), borough, and price is shown.</string>
+    <string name="main_screen_4">Clicking a house in the list display\'s that house\'s information. By default, information is shown for the first house in the list.</string>
+    <string name="main_screen_5">The house\'s description, surface area, number of rooms, number of bathrooms, number of bedrooms, and address are shown. A map is also shown centered on the house\'s location.</string>
+    <string name="main_screen_6">If the house has images, they are displayed on the top of the screen.</string>
+    <string name="map_screen">Map Screen</string>
+    <string name="map_screen_1">Clicking the Map icon will show the Map screen.</string>
+    <string name="map_screen_2">The Map screen shows a map, centered on the location you chose in your settings, with markers for nearby houses.</string>
+    <string name="map_screen_3">Clicking a house will show the house type and price. Clicking that will show the Main Screen with that house\'s information shown.</string>
+    <string name="add_house_screen">Add House Screen</string>
+    <string name="add_house_screen_1">Clicking the Plus icon will show the Add House screen, which allows you to add a house to the list.</string>
+    <string name="add_house_screen_2">Clicking Add House adds the house to the list using the information provided.</string>
+    <string name="add_house_screen_3">All fields must be filled out, except images which are optional.</string>
+    <string name="add_house_screen_4">To add images, enter the room that is visible in the image and the URL of the image. Then, click Add Image.</string>
+    <string name="add_house_screen_5">To remove the most recently added image, click Remove Image.</string>
+    <string name="edit_house_screen">Edit House Screen</string>
+    <string name="edit_house_screen_1">Clicking the Edit icon will show the Edit House screen, which allows you to edit a house on the list.</string>
+    <string name="edit_house_screen_2">Most functions of the Edit House screen are the same as in the Add House screen.</string>
+    <string name="edit_house_screen_3">You may edit a house only if you are the person who added it.</string>
+    <string name="search_houses_screen">Search Houses Screen</string>
+    <string name="search_houses_screen_1">Clicking the Search icon will show the Search Houses screen, which allows you to only show houses that fit your desired criteria.</string>
+    <string name="search_houses_screen_2">All fields are optional. If a field is left blank, that search criteria will be ignored.</string>
+    <string name="search_houses_screen_3">Clicking Search Houses will show the Main screen with the list filtered to match your search criteria, if at least one house matches.</string>
+    <string name="settings_screen">Settings Screen</string>
+    <string name="settings_screen_1">The Settings screen allows you to customize your settings.</string>
+    <string name="settings_screen_2">Your location settings are used when viewing the Map screen. You may either use your actual location or a manually entered location.</string>
+
+
     <!-- Error Messages -->
     <string name="no_search_results">No houses match your search.</string>
     <string name="fields_empty">Please fill in all fields.</string>
     <string name="no_images_added_yet">No images added yet.</string>
     <string name="no_property_selected">No property selected.</string>
     <string name="not_agent">You are not the agent in charge of this property.</string>
+    <string name="email_password_required">Email and Password are required.</string>
+    <string name="passwords_must_match">Passwords must match.</string>
+    <string name="email_displayname_password_reenter_required">Email, Display Name, Password, and Reenter Password are required.</string>
 </resources>

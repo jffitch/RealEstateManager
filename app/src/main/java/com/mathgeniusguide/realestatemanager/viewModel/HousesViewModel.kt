@@ -77,9 +77,14 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
         viewModelScope.launch {
             try {
                 Log.d("Real Estate Manager", "ViewModel Function Run")
+                // fetch response from API, use result
                 val response = Api.invoke(connectivityInterceptor).getHouseItemWithCoordinates(house.location ?: "").body()
                 val result = response?.results
                 if (!result.isNullOrEmpty()) {
+                    // use location from first result, if exists
+                    // update house information to include fetched latitude and longitude
+                    // post to newHouseWithCoordinates if new house, to updatedHouseWithCoordinates if updated house
+                    // newHouseWithCoordinates and updatedHouseWithCoordinates will be observed in MainActivity
                     val location = result[0].geometry.location
                     Log.d("Real Estate Manager", "ViewModel Result Not Empty")
                     house.latitude = location.lat
@@ -90,6 +95,7 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
                         _updatedHouseWithCoordinates?.postValue(house)
                     }
                 } else {
+                    // if result is empty because API call failed due to invalid address, show error message
                     Toast.makeText(getApplication(), "Invalid Address", Toast.LENGTH_LONG).show()
                 }
                 _isDataLoading.postValue(false)

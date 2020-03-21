@@ -13,6 +13,15 @@
         android:label="@string/add_a_house"
         tools:layout="@layout/add_fragment">
     </fragment>
+    <fragment android:id="@+id/map"
+        android:name="com.mathgeniusguide.realestatemanager.ui.MapFragment"
+        android:label="@string/map"
+        tools:layout="@layout/map_fragment">
+        <action android:id="@+id/action_map_click"
+            app:destination="@id/main"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out" />
+    </fragment>
     <fragment android:id="@+id/login"
         android:name="com.mathgeniusguide.realestatemanager.ui.LoginFragment"
         android:label="@string/app_name"
@@ -52,5 +61,15 @@
             app:destination="@id/search"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out" />
+    </fragment>
+    <fragment android:id="@+id/settings"
+        android:name="com.mathgeniusguide.realestatemanager.ui.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/settings_fragment">
+    </fragment>
+    <fragment android:id="@+id/instructions"
+        android:name="com.mathgeniusguide.realestatemanager.ui.InstructionsFragment"
+        android:label="@string/instructions"
+        tools:layout="@layout/instructions_fragment">
     </fragment>
 </navigation>

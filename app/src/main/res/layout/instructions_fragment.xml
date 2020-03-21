@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/login_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/login_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/login_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/login_screen_3" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/login_screen_4" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/login_screen_5" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/main_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_3" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_4" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_5" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/main_screen_6" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/map_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/map_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/map_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/map_screen_3" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/add_house_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/add_house_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/add_house_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/add_house_screen_3" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/add_house_screen_4" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/add_house_screen_5" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/edit_house_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/edit_house_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/edit_house_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/edit_house_screen_3" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/search_houses_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/search_houses_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/search_houses_screen_2" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/search_houses_screen_3" />
+
+        <TextView
+            style="@style/sectionName"
+            android:text="@string/settings_screen" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/settings_screen_1" />
+
+        <TextView
+            style="@style/sectionText"
+            android:text="@string/settings_screen_2" />
+    </LinearLayout>
+</ScrollView>
+
+    <!-- Code Generator
+
+    *Login Screen
+    When you open the app, if you are not logged in, the app will open on the Login screen.
+    If you wish to log in as an existing user, fill out the Email and Password fields.
+    If you wish to log in as a new user, click New Account. Two new fields will appear (Display Name and Reenter Password). Fill out all four fields.
+    After logging in, the Main screen will be displayed.
+    Clicking the Logout icon will show the Login screen.
+    *Main Screen
+    When you open the app, if you are logged in, the app will open on the Main screen.
+    Clicking the House icon will show the Main screen.
+    On the left of the screen, a list shows all houses that have been added to the database. Each house's type (House, Flat, Duplex, Penthouse), borough, and price is shown.
+    Clicking a house in the list display's that house's information. By default, information is shown for the first house in the list.
+    The house's description, surface area, number of rooms, number of bathrooms, number of bedrooms, and address are shown. A map is also shown centered on the house's location.
+    If the house has images, they are displayed on the top of the screen.
+    *Map Screen
+    Clicking the Map icon will show the Map screen.
+    The Map screen shows a map, centered on the location you chose in your settings, with markers for nearby houses.
+    Clicking a house will show the house type and price. Clicking that will show the Main Screen with that house's information shown.
+    *Add House Screen
+    Clicking the Plus icon will show the Add House screen, which allows you to add a house to the list.
+    Clicking Add House adds the house to the list using the information provided.
+    All fields must be filled out, except images which are optional.
+    To add images, enter the room that is visible in the image and the URL of the image. Then, click Add Image.
+    To remove the most recently added image, click Remove Image.
+    *Edit House Screen
+    Clicking the Edit icon will show the Edit House screen, which allows you to edit a house on the list.
+    Most functions of the Edit House screen are the same as in the Add House screen.
+    You may edit a house only if you are the person who added it.
+    *Search Houses Screen
+    Clicking the Search icon will show the Search Houses screen, which allows you to only show houses that fit your desired criteria.
+    All fields are optional. If a field is left blank, that search criteria will be ignored.
+    Clicking Search Houses will show the Main screen with the list filtered to match your search criteria, if at least one house matches.
+    *Settings Screen
+    The Settings screen allows you to customize your settings.
+    Your location settings are used when viewing the Map screen. You may either use your actual location or a manually entered location.
+    -->
