@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/loan_simulator_label"
+        android:text="@string/price"
+        android:id="@+id/priceLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        style="@style/loan_simulator_text_field"
+        android:text="@string/price_placeholder"
+        android:id="@+id/priceField"
+        app:layout_constraintBottom_toBottomOf="@id/priceLabel"
+        app:layout_constraintStart_toEndOf="@id/priceLabel" />
+
+    <TextView
+        style="@style/loan_simulator_label"
+        android:text="@string/down_payment"
+        android:id="@+id/downPaymentLabel"
+        app:layout_constraintTop_toBottomOf="@id/priceLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        style="@style/loan_simulator_edittext"
+        android:text="0"
+        android:id="@+id/downPaymentField"
+        android:layout_width="80dp"
+        android:maxLength="8"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/downPaymentLabel"
+        app:layout_constraintStart_toEndOf="@id/downPaymentLabel" />
+
+    <TextView
+        style="@style/loan_simulator_label"
+        android:text="@string/time"
+        android:id="@+id/timeLabel"
+        app:layout_constraintTop_toBottomOf="@id/downPaymentLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        style="@style/loan_simulator_edittext"
+        android:text="30"
+        android:id="@+id/timeField"
+        android:layout_width="24dp"
+        android:maxLength="2"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/timeLabel"
+        app:layout_constraintStart_toEndOf="@id/timeLabel" />
+
+    <TextView
+        style="@style/loan_simulator_text_field"
+        android:text="@string/years"
+        android:id="@+id/timeUnit"
+        app:layout_constraintBottom_toBottomOf="@id/timeField"
+        app:layout_constraintStart_toEndOf="@id/timeField" />
+
+    <TextView
+        style="@style/loan_simulator_label"
+        android:text="@string/interest"
+        android:id="@+id/interestLabel"
+        app:layout_constraintTop_toBottomOf="@id/timeLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        style="@style/loan_simulator_edittext"
+        android:text="6.0"
+        android:id="@+id/interestField"
+        android:layout_width="36dp"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@id/interestLabel"
+        app:layout_constraintStart_toEndOf="@id/interestLabel" />
+
+    <TextView
+        style="@style/loan_simulator_text_field"
+        android:text="%"
+        android:id="@+id/interestUnit"
+        app:layout_constraintBottom_toBottomOf="@id/interestField"
+        app:layout_constraintStart_toEndOf="@id/interestField" />
+
+    <Button
+        style="@style/loan_simulator_label"
+        android:text="@string/calculate"
+        android:id="@+id/calculateButton"
+        app:layout_constraintTop_toBottomOf="@id/interestLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/loan_simulator_label"
+        android:text="@string/payment"
+        android:id="@+id/paymentLabel"
+        app:layout_constraintTop_toBottomOf="@id/calculateButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/loan_simulator_text_field"
+        android:text="@string/payment_placeholder"
+        android:id="@+id/paymentField"
+        app:layout_constraintBottom_toBottomOf="@id/paymentLabel"
+        app:layout_constraintStart_toEndOf="@id/paymentLabel" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/paymentListLabels"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/paymentField"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            style="@style/loan_simulator_list_label"
+            android:text="@string/date" />
+        <TextView
+            style="@style/loan_simulator_list_label"
+            android:text="@string/principal" />
+        <TextView
+            style="@style/loan_simulator_list_label"
+            android:text="@string/interest" />
+        <TextView
+            style="@style/loan_simulator_list_label"
+            android:text="@string/balance" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/paymentList"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintTop_toBottomOf="@id/paymentListLabels"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/paymentListLabels"
+        app:layout_constraintEnd_toEndOf="@id/paymentListLabels" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- code generator
+
+priceLabel, tvb25, ww, tm25, lm25
+priceField, tv25, ww,, x-1*, x-1m10
+timeLabel, tvb25, ww, x-2m10,, lm25
+timeField, et25, 30, w,, x-1*, x-1m10
+timeUnit, tv25, ww,, x-1*, x-1m10
+interestLabel, tvb25, ww, x-3m10,, lm25
+interestField, et25, 54, w,, x-1*, x-1m10
+interestUnit, tv25, ww,, x-1*, x-1m10
+calculateButton, bub25, ww, x-3m10,, lm25
+paymentLabel, tvb25, ww, x-1m10,, lm25
+paymentField, tv25, ww,, x-1*, x-1m10
+paymentListLabels, llh, fw, tm10, em25
+paymentList, rv, ff, e, x-1*, x-1*
+
+-->

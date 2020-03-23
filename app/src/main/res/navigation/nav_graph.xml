@@ -72,4 +72,9 @@
         android:label="@string/instructions"
         tools:layout="@layout/instructions_fragment">
     </fragment>
+    <fragment android:id="@+id/loan"
+        android:name="com.mathgeniusguide.realestatemanager.ui.LoanSimulatorFragment"
+        android:label="@string/loan_simulator"
+        tools:layout="@layout/loan_simulator_fragment">
+    </fragment>
 </navigation>

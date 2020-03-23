@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/payment_item"
+        android:id="@+id/paymentDate"
+        android:text="@string/date" />
+
+    <TextView
+        style="@style/payment_item"
+        android:id="@+id/paymentPrincipal"
+        android:text="@string/principal" />
+
+    <TextView
+        style="@style/payment_item"
+        android:id="@+id/paymentInterest"
+        android:text="@string/interest" />
+
+    <TextView
+        style="@style/payment_item"
+        android:id="@+id/paymentBalance"
+        android:text="@string/balance" />
+
+</LinearLayout>

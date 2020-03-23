@@ -22,6 +22,7 @@ import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.Constants
 import com.mathgeniusguide.realestatemanager.utils.FirebaseFunctions.createHouse
 import com.mathgeniusguide.realestatemanager.utils.FirebaseFunctions.updateHouse
+import com.mathgeniusguide.realestatemanager.utils.Functions.sendNotification
 import com.mathgeniusguide.realestatemanager.utils.toHouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.utils.toHouseRoomdbItem
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
@@ -46,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        houseSelected = intent.getStringExtra("house") ?: ""
 
         navController = findNavController(nav_host_fragment)
         toolbar.setupWithNavController(navController)
@@ -125,6 +128,7 @@ class MainActivity : AppCompatActivity() {
             if (it != null) {
                 Log.d(TAG, "House Added")
                 createHouse(it, database)
+                sendNotification(it, this, true)
             }
         })
         viewModel.updatedHouseWithCoordinates?.observe(this, Observer {
@@ -132,6 +136,7 @@ class MainActivity : AppCompatActivity() {
             if (it != null) {
                 Log.d(TAG, "House Updated")
                 updateHouse(it, database)
+                sendNotification(it, this, false)
             }
         })
     }
@@ -169,7 +174,6 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_logout)
                 return true
             }
-            houseSelected = ""
             filteredHouseItemList.clear()
         }
         // otherwise, load target fragment as normal

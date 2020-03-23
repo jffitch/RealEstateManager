@@ -2,6 +2,7 @@ package com.mathgeniusguide.realestatemanager.utils
 
 import com.google.firebase.database.DatabaseReference
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
+import com.mathgeniusguide.realestatemanager.utils.Functions.sendNotification
 
 object FirebaseFunctions {
     fun createHouse(houseItem: HouseFirebaseItem, database: DatabaseReference) {
