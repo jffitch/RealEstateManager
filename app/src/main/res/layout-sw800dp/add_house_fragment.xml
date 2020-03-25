@@ -6,7 +6,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/locationLabel"
@@ -27,7 +27,7 @@
         <EditText
             android:id="@+id/addressField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/addressLabel"
             app:layout_constraintStart_toEndOf="@id/addressLabel" />
@@ -35,16 +35,16 @@
         <TextView
             android:id="@+id/cityLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
             android:text="@string/city"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addressLabel" />
+            app:layout_constraintStart_toEndOf="@id/addressField"
+            app:layout_constraintBottom_toBottomOf="@id/addressLabel" />
 
         <EditText
             android:id="@+id/cityField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/cityLabel"
             app:layout_constraintStart_toEndOf="@id/cityLabel" />
@@ -52,7 +52,7 @@
         <TextView
             android:id="@+id/boroughLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="50dp"
             android:text="@string/borough"
             app:layout_constraintBottom_toBottomOf="@id/cityLabel"
             app:layout_constraintStart_toEndOf="@id/cityField" />
@@ -60,7 +60,7 @@
         <EditText
             android:id="@+id/boroughField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/cityLabel"
             app:layout_constraintStart_toEndOf="@id/boroughLabel" />
@@ -68,7 +68,7 @@
         <TextView
             android:id="@+id/zipLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="50dp"
             android:text="@string/zip"
             app:layout_constraintBottom_toBottomOf="@id/cityLabel"
             app:layout_constraintStart_toEndOf="@id/boroughField" />
@@ -76,7 +76,7 @@
         <EditText
             android:id="@+id/zipField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:inputType="number"
             android:maxLength="5"
             android:text=""
@@ -103,7 +103,7 @@
         <EditText
             android:id="@+id/priceField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="80dp"
+            android:layout_width="110dp"
             android:inputType="number"
             android:maxLength="8"
             android:text=""
@@ -113,7 +113,7 @@
         <TextView
             android:id="@+id/areaLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="50dp"
             android:text="@string/area"
             app:layout_constraintBottom_toBottomOf="@id/priceLabel"
             app:layout_constraintStart_toEndOf="@id/priceField" />
@@ -121,7 +121,7 @@
         <EditText
             android:id="@+id/areaField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="40dp"
+            android:layout_width="55dp"
             android:inputType="number"
             android:maxLength="4"
             android:text=""
@@ -140,17 +140,15 @@
         <TextView
             android:id="@+id/roomsLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
             android:text="@string/rooms"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/priceLabel" />
+            app:layout_constraintStart_toEndOf="@id/areaUnitLabel"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
 
         <EditText
             android:id="@+id/roomsField"
             style="@style/add_fragment_rooms_edit_text"
-            android:inputType="number"
-            android:maxLength="2"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
             app:layout_constraintStart_toEndOf="@id/roomsLabel" />
@@ -158,7 +156,7 @@
         <TextView
             android:id="@+id/bedLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="50dp"
             android:text="@string/bedrooms"
             app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
             app:layout_constraintStart_toEndOf="@id/roomsField" />
@@ -166,8 +164,6 @@
         <EditText
             android:id="@+id/bedField"
             style="@style/add_fragment_rooms_edit_text"
-            android:inputType="number"
-            android:maxLength="2"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
             app:layout_constraintStart_toEndOf="@id/bedLabel" />
@@ -175,7 +171,7 @@
         <TextView
             android:id="@+id/bathLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="50dp"
             android:text="@string/bathrooms"
             app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
             app:layout_constraintStart_toEndOf="@id/bedField" />
@@ -183,8 +179,6 @@
         <EditText
             android:id="@+id/bathField"
             style="@style/add_fragment_rooms_edit_text"
-            android:inputType="number"
-            android:maxLength="2"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
             app:layout_constraintStart_toEndOf="@id/bathLabel" />
@@ -210,16 +204,15 @@
             android:id="@+id/typeField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/typeLabel">
+            app:layout_constraintStart_toEndOf="@id/typeLabel"
+            app:layout_constraintBottom_toBottomOf="@id/typeLabel">
 
             <RadioButton
                 android:id="@+id/house"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/add_fragment_rb"
                 android:checked="true"
                 android:text="@string/house" />
 
@@ -229,8 +222,7 @@
 
             <RadioButton
                 android:id="@+id/flat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/add_fragment_rb"
                 android:text="@string/flat" />
 
             <Space
@@ -239,8 +231,7 @@
 
             <RadioButton
                 android:id="@+id/duplex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/add_fragment_rb"
                 android:text="@string/duplex" />
 
             <Space
@@ -249,8 +240,7 @@
 
             <RadioButton
                 android:id="@+id/penthouse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/add_fragment_rb"
                 android:text="@string/penthouse" />
 
         </RadioGroup>
@@ -266,13 +256,13 @@
 
         <EditText
             android:id="@+id/descriptionField"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:lines="5"
+            android:lines="3"
             android:text=""
-            android:textSize="15sp"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
 
@@ -290,7 +280,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="@string/no_images_added_yet"
-            android:textSize="15sp"
+            android:textSize="25sp"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imagesLabel" />
@@ -307,7 +297,7 @@
         <EditText
             android:id="@+id/imageRoomField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/imageRoomLabel"
             app:layout_constraintStart_toEndOf="@id/imageRoomLabel" />
@@ -315,15 +305,15 @@
         <TextView
             android:id="@+id/imageUrlLabel"
             style="@style/add_fragment_field_label"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="50dp"
             android:text="@string/url"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageRoomLabel" />
+            app:layout_constraintStart_toEndOf="@id/imageRoomField"
+            app:layout_constraintBottom_toBottomOf="@id/imageRoomLabel" />
 
         <EditText
             android:id="@+id/imageUrlField"
             style="@style/add_fragment_edit_text"
-            android:layout_width="300dp"
+            android:layout_width="500dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="@id/imageUrlLabel"
             app:layout_constraintStart_toEndOf="@id/imageUrlLabel" />
@@ -332,24 +322,22 @@
             android:id="@+id/addImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="50dp"
             android:text="@string/add_image"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@id/removeImageButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imagesLabel"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@id/imagesLabel"
+            app:layout_constraintBottom_toBottomOf="@id/imagesLabel"
             android:layout_marginEnd="10dp" />
 
         <Button
             android:id="@+id/removeImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="50dp"
             android:text="@string/remove_image"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@id/imageUrlLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addImageButton"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@id/imagesLabel"
+            app:layout_constraintStart_toEndOf="@id/addImageButton"
             android:layout_marginEnd="10dp" />
 
         <Button
@@ -363,7 +351,7 @@
             android:paddingEnd="50dp"
             android:paddingBottom="25dp"
             android:text="@string/add_house"
-            android:textSize="30sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageUrlLabel" />

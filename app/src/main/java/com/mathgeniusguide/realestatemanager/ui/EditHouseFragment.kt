@@ -15,7 +15,7 @@ import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.*
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.add_fragment.*
+import kotlinx.android.synthetic.main.add_house_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,7 +32,7 @@ class EditHouseFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.add_fragment, container, false)
+        return inflater.inflate(R.layout.add_house_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

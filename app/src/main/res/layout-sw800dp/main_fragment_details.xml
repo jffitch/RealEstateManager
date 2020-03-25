@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/surfaceIcon"
+                android:src="@drawable/surface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/surfaceLabel"
+                android:text="@string/surface_area"
+                app:layout_constraintBottom_toTopOf="@id/surfaceStats"
+                app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+                app:layout_constraintTop_toTopOf="@id/surfaceIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/surfaceStats"
+                android:text="0 sq m"
+                app:layout_constraintBottom_toBottomOf="@id/surfaceIcon"
+                app:layout_constraintStart_toEndOf="@id/surfaceIcon"
+                app:layout_constraintTop_toBottomOf="@id/surfaceLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/roomsIcon"
+                android:src="@drawable/house"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/roomsLabel"
+                android:text="@string/number_of_rooms"
+                app:layout_constraintBottom_toTopOf="@id/roomsStats"
+                app:layout_constraintStart_toEndOf="@id/roomsIcon"
+                app:layout_constraintTop_toTopOf="@id/roomsIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/roomsStats"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/roomsIcon"
+                app:layout_constraintStart_toEndOf="@id/roomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/roomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/bathroomsIcon"
+                android:src="@drawable/bath"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/bathroomsLabel"
+                android:text="@string/number_of_bathrooms"
+                app:layout_constraintBottom_toTopOf="@id/bathroomsStats"
+                app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
+                app:layout_constraintTop_toTopOf="@id/bathroomsIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/bathroomsStats"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/bathroomsIcon"
+                app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/bathroomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/bedroomsIcon"
+                android:src="@drawable/bed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/bedroomsLabel"
+                android:text="@string/number_of_bedrooms"
+                app:layout_constraintBottom_toTopOf="@id/bedroomsStats"
+                app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
+                app:layout_constraintTop_toTopOf="@id/bedroomsIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/bedroomsStats"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/bedroomsIcon"
+                app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
+                app:layout_constraintTop_toBottomOf="@id/bedroomsLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/locationIcon"
+                android:src="@drawable/location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/locationLabel"
+                android:text="@string/location"
+                app:layout_constraintBottom_toTopOf="@id/locationStats"
+                app:layout_constraintStart_toEndOf="@id/locationIcon"
+                app:layout_constraintTop_toTopOf="@id/locationIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/locationStats"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="@id/locationIcon"
+                app:layout_constraintStart_toEndOf="@id/locationIcon"
+                app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

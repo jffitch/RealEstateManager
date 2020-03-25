@@ -34,7 +34,7 @@
         android:id="@+id/loan"
         android:title="@string/loan_simulator"
         android:icon="@drawable/loan"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/settings"
         android:title="@string/settings"

@@ -11,7 +11,7 @@
     <fragment android:id="@+id/add"
         android:name="com.mathgeniusguide.realestatemanager.ui.AddHouseFragment"
         android:label="@string/add_a_house"
-        tools:layout="@layout/add_fragment">
+        tools:layout="@layout/add_house_fragment">
     </fragment>
     <fragment android:id="@+id/map"
         android:name="com.mathgeniusguide.realestatemanager.ui.MapFragment"
@@ -34,7 +34,7 @@
     <fragment android:id="@+id/edit"
         android:name="com.mathgeniusguide.realestatemanager.ui.EditHouseFragment"
         android:label="@string/update_a_house"
-        tools:layout="@layout/add_fragment">
+        tools:layout="@layout/add_house_fragment">
     </fragment>
     <fragment android:id="@+id/search"
         android:name="com.mathgeniusguide.realestatemanager.ui.SearchHousesFragment"

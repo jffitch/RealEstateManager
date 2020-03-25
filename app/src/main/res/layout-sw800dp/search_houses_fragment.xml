@@ -20,22 +20,22 @@
             android:id="@+id/priceMinField"
             style="@style/search_fragment_edittext_price"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
-            app:layout_constraintStart_toEndOf="@id/priceLabel" />
+            app:layout_constraintStart_toEndOf="@id/priceLabel"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
 
         <TextView
-            android:id="@+id/priceTo"
             style="@style/search_fragment_label"
+            android:id="@+id/priceTo"
             android:text="@string/to_dollars"
-            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
-            app:layout_constraintStart_toEndOf="@id/priceMinField" />
+            app:layout_constraintStart_toEndOf="@id/priceMinField"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
 
         <EditText
             android:id="@+id/priceMaxField"
             style="@style/search_fragment_edittext_price"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/priceLabel"
-            app:layout_constraintStart_toEndOf="@id/priceTo" />
+            app:layout_constraintStart_toEndOf="@id/priceTo"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
 
         <TextView
             android:id="@+id/typeLabel"
@@ -46,10 +46,10 @@
             app:layout_constraintTop_toBottomOf="@id/priceLabel" />
 
         <RadioGroup
-            android:id="@+id/typeRG"
             style="@style/search_fragment_rg"
-            app:layout_constraintBottom_toBottomOf="@id/typeLabel"
-            app:layout_constraintStart_toEndOf="@id/typeLabel">
+            android:id="@+id/typeRG"
+            app:layout_constraintStart_toEndOf="@id/typeLabel"
+            app:layout_constraintBottom_toBottomOf="@id/typeLabel">
 
             <RadioButton
                 android:id="@+id/anyType"
@@ -98,37 +98,38 @@
             android:id="@+id/areaLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/area_from"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/typeLabel" />
+            app:layout_constraintStart_toEndOf="@id/priceMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/priceLabel" />
 
         <EditText
             android:id="@+id/areaMinField"
             style="@style/search_fragment_edittext_area"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/areaLabel"
-            app:layout_constraintStart_toEndOf="@id/areaLabel" />
+            app:layout_constraintStart_toEndOf="@id/areaLabel"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
 
         <TextView
-            android:id="@+id/areaTo"
             style="@style/search_fragment_label"
+            android:id="@+id/areaTo"
             android:text="@string/sq_m_to"
-            app:layout_constraintBottom_toBottomOf="@id/areaLabel"
-            app:layout_constraintStart_toEndOf="@id/areaMinField" />
+            app:layout_constraintStart_toEndOf="@id/areaMinField"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
 
         <EditText
             android:id="@+id/areaMaxField"
             style="@style/search_fragment_edittext_area"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/areaLabel"
-            app:layout_constraintStart_toEndOf="@id/areaTo" />
+            app:layout_constraintStart_toEndOf="@id/areaTo"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
 
         <TextView
-            android:id="@+id/areaUnitLabel"
             style="@style/search_fragment_label"
+            android:id="@+id/areaUnitLabel"
             android:text="@string/sq_m"
-            app:layout_constraintBottom_toBottomOf="@id/areaLabel"
-            app:layout_constraintStart_toEndOf="@id/areaMaxField" />
+            app:layout_constraintStart_toEndOf="@id/areaMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/areaLabel" />
 
         <TextView
             android:id="@+id/roomsLabel"
@@ -136,86 +137,88 @@
             android:layout_marginTop="10dp"
             android:text="@string/rooms_from"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/areaLabel" />
+            app:layout_constraintTop_toBottomOf="@id/typeLabel" />
 
         <EditText
             android:id="@+id/roomsMinField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
-            app:layout_constraintStart_toEndOf="@id/roomsLabel" />
+            app:layout_constraintStart_toEndOf="@id/roomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
 
         <TextView
-            android:id="@+id/roomsTo"
             style="@style/search_fragment_label"
+            android:id="@+id/roomsTo"
             android:text="@string/to"
-            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
-            app:layout_constraintStart_toEndOf="@id/roomsMinField" />
+            app:layout_constraintStart_toEndOf="@id/roomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
 
         <EditText
             android:id="@+id/roomsMaxField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/roomsLabel"
-            app:layout_constraintStart_toEndOf="@id/roomsTo" />
+            app:layout_constraintStart_toEndOf="@id/roomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
 
         <TextView
             android:id="@+id/bathroomsLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/bathrooms_from"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/roomsLabel" />
+            app:layout_constraintStart_toEndOf="@id/roomsMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/roomsLabel" />
 
         <EditText
             android:id="@+id/bathroomsMinField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bathroomsLabel" />
+            app:layout_constraintStart_toEndOf="@id/bathroomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
 
         <TextView
-            android:id="@+id/bathroomsTo"
             style="@style/search_fragment_label"
+            android:id="@+id/bathroomsTo"
             android:text="@string/to"
-            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bathroomsMinField" />
+            app:layout_constraintStart_toEndOf="@id/bathroomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
 
         <EditText
             android:id="@+id/bathroomsMaxField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bathroomsTo" />
+            app:layout_constraintStart_toEndOf="@id/bathroomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
 
         <TextView
             android:id="@+id/bedroomsLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/bedrooms_from"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bathroomsLabel" />
+            app:layout_constraintStart_toEndOf="@id/bathroomsMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/bathroomsLabel" />
 
         <EditText
             android:id="@+id/bedroomsMinField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bedroomsLabel" />
+            app:layout_constraintStart_toEndOf="@id/bedroomsLabel"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
 
         <TextView
-            android:id="@+id/bedroomsTo"
             style="@style/search_fragment_label"
+            android:id="@+id/bedroomsTo"
             android:text="@string/to"
-            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bedroomsMinField" />
+            app:layout_constraintStart_toEndOf="@id/bedroomsMinField"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
 
         <EditText
             android:id="@+id/bedroomsMaxField"
             style="@style/search_fragment_edittext_rooms"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel"
-            app:layout_constraintStart_toEndOf="@id/bedroomsTo" />
+            app:layout_constraintStart_toEndOf="@id/bedroomsTo"
+            app:layout_constraintBottom_toBottomOf="@id/bedroomsLabel" />
 
         <TextView
             android:id="@+id/boroughLabel"
@@ -229,23 +232,24 @@
             android:id="@+id/boroughField"
             style="@style/search_fragment_edittext"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/boroughLabel"
-            app:layout_constraintStart_toEndOf="@id/boroughLabel" />
+            app:layout_constraintStart_toEndOf="@id/boroughLabel"
+            app:layout_constraintBottom_toBottomOf="@id/boroughLabel" />
 
         <TextView
             android:id="@+id/locationLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boroughLabel" />
+            app:layout_constraintStart_toEndOf="@id/boroughField"
+            app:layout_constraintBottom_toBottomOf="@id/boroughLabel" />
 
         <EditText
             android:id="@+id/locationField"
             style="@style/search_fragment_edittext"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/locationLabel"
-            app:layout_constraintStart_toEndOf="@id/locationLabel" />
+            app:layout_constraintStart_toEndOf="@id/locationLabel"
+            app:layout_constraintBottom_toBottomOf="@id/locationLabel" />
 
         <TextView
             android:id="@+id/agentLabel"
@@ -259,8 +263,8 @@
             android:id="@+id/agentField"
             style="@style/search_fragment_edittext"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/agentLabel"
-            app:layout_constraintStart_toEndOf="@id/agentLabel" />
+            app:layout_constraintStart_toEndOf="@id/agentLabel"
+            app:layout_constraintBottom_toBottomOf="@id/agentLabel" />
 
         <TextView
             android:id="@+id/listDateLabel"
@@ -274,36 +278,37 @@
             android:id="@+id/listDateMinField"
             style="@style/search_fragment_edittext_date"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/listDateLabel"
-            app:layout_constraintStart_toEndOf="@id/listDateLabel" />
+            app:layout_constraintStart_toEndOf="@id/listDateLabel"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
 
         <TextView
-            android:id="@+id/listDateTo"
             style="@style/search_fragment_label"
+            android:id="@+id/listDateTo"
             android:text="@string/to"
-            app:layout_constraintBottom_toBottomOf="@id/listDateLabel"
-            app:layout_constraintStart_toEndOf="@id/listDateMinField" />
+            app:layout_constraintStart_toEndOf="@id/listDateMinField"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
 
         <EditText
             android:id="@+id/listDateMaxField"
             style="@style/search_fragment_edittext_date"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/listDateLabel"
-            app:layout_constraintStart_toEndOf="@id/listDateTo" />
+            app:layout_constraintStart_toEndOf="@id/listDateTo"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
 
         <TextView
             android:id="@+id/soldLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
             android:text="@string/sold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/listDateLabel" />
+            app:layout_constraintStart_toEndOf="@id/agentField"
+            app:layout_constraintBottom_toBottomOf="@id/agentLabel" />
 
         <RadioGroup
-            android:id="@+id/soldRG"
             style="@style/search_fragment_rg"
-            app:layout_constraintBottom_toBottomOf="@id/soldLabel"
-            app:layout_constraintStart_toEndOf="@id/soldLabel">
+            android:id="@+id/soldRG"
+            app:layout_constraintStart_toEndOf="@id/soldLabel"
+            app:layout_constraintBottom_toBottomOf="@id/soldLabel">
 
             <RadioButton
                 android:id="@+id/anySold"
@@ -334,37 +339,38 @@
             android:id="@+id/saleDateLabel"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
             android:text="@string/sale_date_from"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/soldLabel" />
+            app:layout_constraintStart_toEndOf="@id/listDateMaxField"
+            app:layout_constraintBottom_toBottomOf="@id/listDateLabel" />
 
         <EditText
             android:id="@+id/saleDateMinField"
             style="@style/search_fragment_edittext_date"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel"
-            app:layout_constraintStart_toEndOf="@id/saleDateLabel" />
+            app:layout_constraintStart_toEndOf="@id/saleDateLabel"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
 
         <TextView
-            android:id="@+id/saleDateTo"
             style="@style/search_fragment_label"
+            android:id="@+id/saleDateTo"
             android:text="@string/to"
-            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel"
-            app:layout_constraintStart_toEndOf="@id/saleDateMinField" />
+            app:layout_constraintStart_toEndOf="@id/saleDateMinField"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
 
         <EditText
             android:id="@+id/saleDateMaxField"
             style="@style/search_fragment_edittext_date"
             android:text=""
-            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel"
-            app:layout_constraintStart_toEndOf="@id/saleDateTo" />
+            app:layout_constraintStart_toEndOf="@id/saleDateTo"
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel" />
 
         <Button
             android:id="@+id/searchButton"
             style="@style/search_fragment_label"
             android:layout_marginTop="10dp"
             android:text="@string/search_houses"
-            android:textSize="25sp"
+            android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/saleDateLabel" />
 

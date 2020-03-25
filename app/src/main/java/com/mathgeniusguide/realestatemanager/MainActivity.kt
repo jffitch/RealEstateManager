@@ -1,6 +1,7 @@
 package com.mathgeniusguide.realestatemanager
 
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     var username = ANONYMOUS
     var houseSelected = ""
     val markerList = emptyList<Marker?>().toMutableList()
+    var screenWidth = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +66,11 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         login(auth.currentUser)
         observeCoordinates()
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        screenWidth = (displayMetrics.widthPixels / displayMetrics.density).toInt()
+        Log.d(TAG, "Screen Width: " + screenWidth.toString())
     }
 
     var itemListener: ValueEventListener = object : ValueEventListener {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:id="@+id/parent">
+
+    <ImageView
+        android:src="@drawable/image_placeholder"
+        android:id="@+id/houseImage"
+        android:scaleType="centerCrop"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:text="House"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/houseType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/houseLocation"
+        app:layout_constraintStart_toEndOf="@id/houseImage"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:text="Location"
+        android:textSize="30sp"
+        android:id="@+id/houseLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/houseType"
+        app:layout_constraintBottom_toTopOf="@id/housePrice"
+        app:layout_constraintStart_toEndOf="@id/houseImage"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:text="$25,000,000"
+        android:textSize="30sp"
+        android:textColor="@color/housePrice"
+        android:id="@+id/housePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/houseLocation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/houseImage"
+        android:layout_marginStart="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--Code Generator
+houseImage, iv, 60, 60, c, l
+houseType, tvb15, ww, s, 0m10
+houseLocation, tv15, ww, m, 0m10
+housePrice, tv15, ww, e, 0m10
+-->

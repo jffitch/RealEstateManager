@@ -83,7 +83,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 this.mapType = GoogleMap.MAP_TYPE_NORMAL
                 this.addMarker(MarkerOptions().position(coord).title(resources.getString(R.string.you_are_here)))
                 val pos =
-                        CameraPosition.builder().target(coord).zoom(11.toFloat()).bearing(0.toFloat())
+                        CameraPosition.builder().target(coord).zoom((if (act.screenWidth > 800) 12 else 10).toFloat()).bearing(0.toFloat())
                                 .tilt(45.toFloat()).build()
                 this.moveCamera(CameraUpdateFactory.newCameraPosition(pos))
             }
