@@ -1,7 +1,6 @@
 package com.mathgeniusguide.realestatemanager.utils
 
 import android.content.Context
-import com.mathgeniusguide.realestatemanager.utils.isOnline
 import okhttp3.Interceptor
 import okhttp3.Response
 

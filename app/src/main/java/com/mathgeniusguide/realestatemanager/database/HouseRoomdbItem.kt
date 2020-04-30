@@ -1,6 +1,7 @@
 package com.mathgeniusguide.realestatemanager.database
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class HouseRoomdbItem(

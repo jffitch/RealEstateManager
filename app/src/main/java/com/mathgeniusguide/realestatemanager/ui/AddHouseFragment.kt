@@ -11,10 +11,9 @@ import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
-import com.mathgeniusguide.realestatemanager.utils.Constants
+import com.mathgeniusguide.realestatemanager.utils.*
 import com.mathgeniusguide.realestatemanager.utils.Functions.fullLocation
-import com.mathgeniusguide.realestatemanager.utils.toFirebaseList
-import com.mathgeniusguide.realestatemanager.utils.toTextList
+import com.mathgeniusguide.realestatemanager.utils.Functions.hide
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_house_fragment.*
@@ -22,8 +21,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddHouseFragment : Fragment() {
-    val viewModel by lazy { ViewModelProviders.of(activity as MainActivity).get(HousesViewModel::class.java) }
-    val imageList = emptyList<MediaImage>().toMutableList()
+    private val viewModel by lazy { ViewModelProviders.of(activity as MainActivity).get(HousesViewModel::class.java) }
+    private val imageList = emptyList<MediaImage>().toMutableList()
     lateinit var act: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +40,12 @@ class AddHouseFragment : Fragment() {
         act = activity as MainActivity
         act.toolbar.visibility = View.VISIBLE
         act.toolbar.navigationIcon = null
+        // hide fields related to sale, as they are not used when adding a new house
+        hide(saleLabel, saleDateLabel, saleDateField, soldLabel, soldField)
         setUpButtons()
     }
 
-    fun setUpButtons() {
+    private fun setUpButtons() {
         addHouseButton.setOnClickListener {
             if (arrayOf(areaField, bathField, bedField, boroughField, addressField, cityField, zipField, priceField, roomsField).all { it.text.isNotEmpty() }) {
                 // if required fields are filled, get information from fields and store in HouseFirebaseItem object
@@ -62,7 +63,8 @@ class AddHouseFragment : Fragment() {
                 house.images = imageList.toFirebaseList()
                 house.listDate = sdf.format(Date())
                 house.location = fullLocation(addressField.text.toString(), cityField.text.toString(), zipField.text.toString())
-                house.price = priceField.text.toString().toInt()
+                val price = priceField.text.toString().toInt()
+                house.price = if (Locale.getDefault().language != "en") price.convertEurosToDollars() else price
                 house.rooms = roomsField.text.toString().toInt()
                 house.saleDate = ""
                 house.type = when (typeField.checkedRadioButtonId) {
@@ -72,7 +74,13 @@ class AddHouseFragment : Fragment() {
                     R.id.penthouse -> Constants.PENTHOUSE
                     else -> 0
                 }
-                viewModel.fetchHouseCoordinates(house, true)
+                if (context?.isOnline() ?: false) {
+                    // if internet connection, fetch coordinates from typed address
+                    viewModel.fetchHouseCoordinates(house, true, context!!)
+                } else {
+                    // if no internet connection, show error message
+                    Toast.makeText(context, resources.getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+                }
             } else {
                 // if required fields are not filled, show error message
                 Toast.makeText(context, resources.getString(R.string.fields_empty), Toast.LENGTH_LONG).show()

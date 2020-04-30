@@ -8,18 +8,25 @@
     <string name="reenter_password">Reenter Password</string>
     <string name="sign_in">Sign In</string>
     <string name="new_account">New Account</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="password_reset_email_sent">Password Reset Email Sent</string>
 
     <!--Main Screen Details-->
     <string name="surface_area">Surface Area</string>
-    <string name="number_of_rooms">Number of Rooms</string>
-    <string name="number_of_bathrooms">Number of Bathrooms</string>
-    <string name="number_of_bedrooms">Number of Bedrooms</string>
     <string name="location">Location</string>
     <string name="number_sq_m">%1$d sq m</string>
     <string name="dollar_sign">$%1$s</string>
+    <string name="currency_decimal">%,.2f</string>
+    <string name="currency">%,d</string>
     <string name="media">Media</string>
     <string name="description">Description:</string>
     <string name="welcome">Welcome, %1$s</string>
+    <string name="listing_info">Listing Info</string>
+    <string name="listed_on">Listed On %1$s</string>
+    <string name="by_agent">By %1$s</string>
+    <string name="full_listing">#1$s\n%2$s\n%3$s</string>
+    <string name="sold_on">Sold On %1$s</string>
+    <string name="sold_caps">SOLD</string>
 
     <!--Add House Fragment-->
     <string name="address">Address</string>
@@ -42,6 +49,7 @@
     <string name="images">Images</string>
     <string name="room">Room</string>
     <string name="url">URL</string>
+    <string name="sale">Sale</string>
 
     <!--House Types-->
     <string name="house">House</string>
@@ -73,6 +81,7 @@
     <string name="agent">Agent</string>
     <string name="list_date_from">List Date From</string>
     <string name="sold">Sold</string>
+    <string name="sold_question">Sold?</string>
     <string name="not_sold">Not Sold</string>
     <string name="sale_date_from">Sale Date From</string>
     <string name="save">Save</string>
@@ -82,7 +91,9 @@
     <string name="you_are_here">You Are Here</string>
 
     <!-- Settings Fragment -->
-    <string name="use_actual_location">Use Actual Location</string>
+    <string name="location_mode">Location Mode</string>
+    <string name="actual">Actual</string>
+    <string name="coordinates">Coordinates</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
 
@@ -124,9 +135,9 @@
 
     <!-- Notifications -->
     <string name="property_added">Property Added</string>
-    <string name="property_added_details">%1$s for $%2$s in %3$s added.</string>
+    <string name="property_added_details">%1$s for $%2$s in %4$s added.</string>
     <string name="property_updated">Property Updated</string>
-    <string name="property_updated_details">%1$s for $%2$s in %3$s updated.</string>
+    <string name="property_updated_details">%1$s for $%2$s in %4$s updated.</string>
 
     <!-- Loan Simulator -->
     <string name="price_placeholder">00,000,000</string>
@@ -148,8 +159,12 @@
     <string name="no_images_added_yet">No images added yet.</string>
     <string name="no_property_selected">No property selected.</string>
     <string name="not_agent">You are not the agent in charge of this property.</string>
+    <string name="email_required">Email is required.</string>
     <string name="email_password_required">Email and Password are required.</string>
     <string name="passwords_must_match">Passwords must match.</string>
     <string name="email_displayname_password_reenter_required">Email, Display Name, Password, and Reenter Password are required.</string>
     <string name="time_empty">Please fill the Time field.</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="invalid_address">Invalid Address</string>
+    <string name="no_internet">No internet connection.</string>
 </resources>

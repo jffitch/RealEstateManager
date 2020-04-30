@@ -10,4 +10,12 @@ object Constants {
     const val FLAT = 1
     const val DUPLEX = 2
     const val PENTHOUSE = 3
+
+    const val PREF = "com.mathgeniusguide.realestatemanager.pref"
+    const val LOCATION_ACTUAL = 0
+    const val LOCATION_COORDINATES = 1
+    const val LOCATION_ADDRESS = 2
+    const val LATITUDE_DEFAULT = 40.7537
+    const val LONGITUDE_DEFAULT = -73.9992
+    const val ADDRESS_DEFAULT = "New York, NY 10001"
 }

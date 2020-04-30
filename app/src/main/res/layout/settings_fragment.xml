@@ -1,63 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/settings_fragment_label"
-        android:text="@string/use_actual_location"
         android:id="@+id/useLocationLabel"
-        app:layout_constraintTop_toTopOf="parent"
+        style="@style/settings_fragment_label"
+        android:layout_marginTop="25dp"
+        android:text="@string/location_mode"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="25dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/useLocationCheckBox"
+    <RadioGroup
+        android:id="@+id/locationRG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/useLocationLabel"
-        app:layout_constraintStart_toEndOf="@id/useLocationLabel"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/useLocationLabel">
+
+        <RadioButton
+            style="@style/settings_fragment_rb"
+            android:id="@+id/locationActual"
+            android:checked="true"
+            android:text="@string/actual" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            style="@style/settings_fragment_rb"
+            android:id="@+id/locationCoordinates"
+            android:text="@string/coordinates" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            style="@style/settings_fragment_rb"
+            android:id="@+id/locationAddress"
+            android:text="@string/address" />
+    </RadioGroup>
 
     <TextView
+        android:id="@+id/latitudeLabel"
         style="@style/settings_fragment_label"
         android:text="@string/latitude"
-        android:id="@+id/latitudeLabel"
-        app:layout_constraintTop_toBottomOf="@id/useLocationLabel"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationRG" />
 
     <EditText
+        android:id="@+id/latitudeField"
         style="@style/settings_fragment_edittext"
         android:text=""
-        android:id="@+id/latitudeField"
         app:layout_constraintBottom_toBottomOf="@id/latitudeLabel"
         app:layout_constraintStart_toEndOf="@id/latitudeLabel" />
 
     <TextView
+        android:id="@+id/longitudeLabel"
         style="@style/settings_fragment_label"
         android:text="@string/longitude"
-        android:id="@+id/longitudeLabel"
-        app:layout_constraintTop_toBottomOf="@id/latitudeLabel"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/latitudeLabel" />
 
     <EditText
+        android:id="@+id/longitudeField"
         style="@style/settings_fragment_edittext"
         android:text=""
-        android:id="@+id/longitudeField"
         app:layout_constraintBottom_toBottomOf="@id/longitudeLabel"
         app:layout_constraintStart_toEndOf="@id/longitudeLabel" />
 
+    <TextView
+        android:id="@+id/addressLabel"
+        style="@style/settings_fragment_label"
+        android:text="@string/address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/longitudeLabel" />
+
+    <EditText
+        android:id="@+id/addressField"
+        style="@style/settings_fragment_edittext"
+        android:text=""
+        android:inputType="text"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/addressLabel"
+        app:layout_constraintStart_toEndOf="@id/addressLabel"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        style="@style/settings_fragment_label"
+        android:id="@+id/saveButton"
+        android:text="@string/save"
+        android:padding="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressLabel" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!-- code generator
+    <!-- code generator
 
-useSensorLabel, tvb25, ww, tm25, lm25
-useSensorCheckBox, cb, ww, x-1*,, x-1m10
-latitudeLabel, tvb25, ww, x-2m10,, lm25
-latitudeField, et25, 200, w,, x-1*, x-1m10
-longitudeLabel, tvb25, ww, x-2m10,, lm25
-longitudeField, et25, 200, w,, x-1*, x-1m10
+    useSensorLabel, tvb25, ww, tm25, lm25
+    useSensorCheckBox, cb, ww, x-1,, x-1m10
+    latitudeLabel, tvb25, ww, x-2m10,, lm25
+    latitudeField, et25, 200, w,, x-1, x-1m10
+    longitudeLabel, tvb25, ww, x-2m10,, lm25
+    longitudeField, et25, 200, w,, x-1, x-1m10
 
--->
+    -->

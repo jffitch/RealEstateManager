@@ -20,6 +20,7 @@ class PaymentAdapter(private val items: ArrayList<PaymentItem>, val context: Con
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = items[position]
+        // load payment info into each item in payment list
         holder.paymentDate.text = i.date
         holder.paymentPrincipal.text = i.principal
         holder.paymentInterest.text = i.interest

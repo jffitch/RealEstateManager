@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -13,6 +14,8 @@ import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
 import com.mathgeniusguide.realestatemanager.utils.*
+import com.mathgeniusguide.realestatemanager.utils.Functions.hide
+import com.mathgeniusguide.realestatemanager.utils.Functions.show
 import com.mathgeniusguide.realestatemanager.viewModel.HousesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_house_fragment.*
@@ -20,10 +23,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class EditHouseFragment: Fragment() {
-    val viewModel by lazy { ViewModelProviders.of(activity as MainActivity).get(HousesViewModel::class.java) }
-    var imageList = emptyList<MediaImage>().toMutableList()
+    private val viewModel by lazy { ViewModelProviders.of(activity as MainActivity).get(HousesViewModel::class.java) }
+    private var imageList = emptyList<MediaImage>().toMutableList()
     lateinit var act: MainActivity
-    lateinit var houseItem: HouseFirebaseItem
+    private lateinit var houseItem: HouseFirebaseItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,7 @@ class EditHouseFragment: Fragment() {
         setUpButtons()
     }
 
-    fun loadInfo() {
+    private fun loadInfo() {
         // load info into fields
         val houseID = act.houseSelected
         if (act.houseItemList.none { it.id == houseID }) {
@@ -59,7 +62,8 @@ class EditHouseFragment: Fragment() {
         boroughField.setText(houseItem.borough.toString())
         descriptionField.setText(houseItem.description.toString())
         imagesList.text = imageList.toTextList()
-        priceField.setText(houseItem.price.toString())
+        val price = if (Locale.getDefault().language != "en") (houseItem.price ?: 0).convertDollarsToEuros() else houseItem.price ?: 0
+        priceField.setText(price.toString())
         roomsField.setText(houseItem.rooms.toString())
         typeField.check(when (houseItem.type) {
             Constants.FLAT -> R.id.flat
@@ -67,6 +71,13 @@ class EditHouseFragment: Fragment() {
             Constants.PENTHOUSE -> R.id.penthouse
             else -> R.id.house
         })
+        soldField.isChecked = (!houseItem.saleDate.isNullOrEmpty())
+        if (soldField.isChecked) {
+            show(saleDateLabel, saleDateField)
+        } else {
+            hide(saleDateLabel, saleDateField)
+        }
+        saleDateField.setText(houseItem.saleDate)
         // Firebase stores location as one field
         // split into address, city, and zip fields
         val location = houseItem.location.splitLocation()
@@ -75,7 +86,7 @@ class EditHouseFragment: Fragment() {
         zipField.setText(location.zip)
     }
 
-    fun setUpButtons() {
+    private fun setUpButtons() {
         addHouseButton.text = resources.getString(R.string.update_house)
         addHouseButton.setOnClickListener {
             Log.d("Real Estate Manager", "Update House Button Clicked")
@@ -85,7 +96,6 @@ class EditHouseFragment: Fragment() {
                 // saleDate is empty
                 // fetch latitude and longitude using ViewModel function
                 Log.d("Real Estate Manager", "Update House Button Code Run")
-                val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
                 val house = HouseFirebaseItem()
                 house.id = houseItem.id
                 house.agent = act.username
@@ -97,9 +107,10 @@ class EditHouseFragment: Fragment() {
                 house.images = imageList.toFirebaseList()
                 house.listDate = houseItem.listDate
                 house.location = Functions.fullLocation(addressField.text.toString(), cityField.text.toString(), zipField.text.toString())
-                house.price = priceField.text.toString().toInt()
+                val price = priceField.text.toString().toInt()
+                house.price = if (Locale.getDefault().language != "en") price.convertEurosToDollars() else price
                 house.rooms = roomsField.text.toString().toInt()
-                house.saleDate = ""
+                house.saleDate = if (soldField.isChecked) saleDateField.text.toString().replace(Regex("\\D"), "/") else ""
                 house.type = when (typeField.checkedRadioButtonId) {
                     R.id.house -> Constants.HOUSE
                     R.id.flat -> Constants.FLAT
@@ -107,7 +118,13 @@ class EditHouseFragment: Fragment() {
                     R.id.penthouse -> Constants.PENTHOUSE
                     else -> 0
                 }
-                viewModel.fetchHouseCoordinates(house, false)
+                if (context?.isOnline() ?: false) {
+                    // if internet connection, fetch coordinates from typed address
+                    viewModel.fetchHouseCoordinates(house, false, context!!)
+                } else {
+                    // if no internet connection, show error message
+                    Toast.makeText(context, resources.getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+                }
             } else {
                 // if required fields are not filled, show error message
                 Toast.makeText(context, resources.getString(R.string.fields_empty), Toast.LENGTH_LONG).show()
@@ -128,6 +145,15 @@ class EditHouseFragment: Fragment() {
             if (imageList.isNotEmpty()) {
                 imageList.removeAt(imageList.lastIndex)
                 imagesList.text = imageList.toTextList()
+            }
+        }
+        soldField.setOnClickListener {
+            if ((it as CheckBox).isChecked) {
+                show(saleDateLabel, saleDateField)
+                val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+                saleDateField.setText(sdf.format(Date()))
+            } else {
+                hide(saleDateLabel, saleDateField)
             }
         }
     }

@@ -8,7 +8,11 @@ import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.database.HouseRoomdbItem
 import com.mathgeniusguide.realestatemanager.objects.HouseLocation
 import com.mathgeniusguide.realestatemanager.objects.MediaImage
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.round
 
+// check internet connection
 fun Context.isOnline(): Boolean {
     val connectivityManager =
             applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -16,14 +20,17 @@ fun Context.isOnline(): Boolean {
     return info != null && info.isConnected
 }
 
+// convert dollars to euros
 fun Int.convertDollarsToEuros(): Int {
-    return Math.round(this * 0.812).toInt()
+    return round(this * 0.812).toInt()
 }
 
+// convert euros to dollars
 fun Int.convertEurosToDollars(): Int {
-    return Math.round(this * 1.232).toInt()
+    return round(this * 1.232).toInt()
 }
 
+// convert house type constant to string
 fun Int.toHouseType(resources: Resources): String {
     return when (this) {
         Constants.HOUSE -> resources.getString(R.string.house)
@@ -34,6 +41,7 @@ fun Int.toHouseType(resources: Resources): String {
     }
 }
 
+// convert checked radio button id to house type constant
 fun Int.toHouseTypeConstant(): Int {
     return when (this) {
         R.id.house -> Constants.HOUSE
@@ -44,34 +52,37 @@ fun Int.toHouseTypeConstant(): Int {
     }
 }
 
+// convert string to MediaImage object
 fun String.toMediaImage(): MediaImage {
     val mediaImage = MediaImage()
     val list = this.split("|")
-    mediaImage.room = if (list.size >= 1) list[0] else ""
+    mediaImage.room = if (list.isNotEmpty()) list[0] else ""
     mediaImage.url = if (list.size >= 2) list[1] else ""
     return mediaImage
 }
 
+// convert MediaImage list to text for AddFragment view
 fun MutableList<MediaImage>.toTextList(): String {
     return this.map { "${it.room}: ${it.url}" }.joinToString("\n")
 }
 
+// convert MediaImage list to text for Firebase
 fun MutableList<MediaImage>.toFirebaseList(): String {
     return this.map { "${it.room}|${it.url}" }.joinToString("||")
 }
 
+// convert string to image list for MediaAdapter
 fun String.toImageList(): MutableList<MediaImage> {
     return this.split("||").map { it.toMediaImage() }.toMutableList()
 }
 
+// convert text address to API call
 fun String.toAPI(width: Int, height: Int, zoom: Int): String {
-    //https://maps.googleapis.com/maps/api/staticmap?center=144-85+37th+Avenue,Flushing,NY&zoom=16&size=200x200&maptype=roadmap&key=AIzaSyDMWYwVXRhuhSQ5vcom9iAI2-FH6T6QKDI&markers=color:red%7C144-85+37th+Avenue,Flushing,NY
-    //144-85 37th Avenue|Flushing, NY 11354|United States
-    //144-85 37th Avenue,Flushing, NY
     val address = this.replace("|United States", "").replace("|", ",")
     return "${Constants.STATIC_MAPS}?center=${address}&zoom=${zoom}&size=${width}x${height}&maptype=roadmap&markers=color:red%7C${address}&key=${Constants.API_KEY}"
 }
 
+// parse location parts from address string
 fun String?.splitLocation(): HouseLocation {
     val houseLocation = HouseLocation()
     if (this == null) {
@@ -84,8 +95,20 @@ fun String?.splitLocation(): HouseLocation {
     return houseLocation
 }
 
+// convert sorting date to text date
+fun String.toDateText(): String {
+    try {
+        val oldSdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+        val newSdf = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
+        return newSdf.format(oldSdf.parse(this))
+    } catch (e: Exception){
+        return this
+    }
+}
+
+// convert Firebase house item to RoomDB house item
 fun HouseFirebaseItem.toHouseRoomdbItem(): HouseRoomdbItem {
-    val item = HouseRoomdbItem(
+    return HouseRoomdbItem(
             id = this.id!!,
             agent = this.agent,
             area = this.area,
@@ -103,9 +126,9 @@ fun HouseFirebaseItem.toHouseRoomdbItem(): HouseRoomdbItem {
             saleDate = this.saleDate,
             type = this.type
     )
-    return item
 }
 
+// convert RoomDB house item to Firebase house item
 fun HouseRoomdbItem.toHouseFirebaseItem(): HouseFirebaseItem {
     val item = HouseFirebaseItem()
     item.id = this.id

@@ -2,7 +2,6 @@ package com.mathgeniusguide.realestatemanager.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.mathgeniusguide.realestatemanager.database.HouseRoomdbItem
 
 @Dao
 interface HouseDao{

@@ -1,8 +1,7 @@
 package com.mathgeniusguide.realestatemanager.utils
 
 import android.content.Context
-import android.net.wifi.WifiManager
-
+import android.net.ConnectivityManager
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -11,15 +10,18 @@ import java.util.*
  */
 
 object Utils {
+    var date = Date()
 
     val todayDate: String
         get() {
-            val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-            return dateFormat.format(Date())
+            val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
+            return dateFormat.format(date)
         }
 
     fun isInternetAvailable(context: Context): Boolean {
-        val wifi = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
-        return wifi.isWifiEnabled
+        val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val info = connectivityManager.activeNetworkInfo
+        return info != null && info.isConnected
     }
 }

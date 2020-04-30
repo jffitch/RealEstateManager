@@ -133,7 +133,7 @@
     </style>
     <style name="settings_fragment_label">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">10dp</item>
@@ -141,10 +141,16 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
     <style name="settings_fragment_edittext">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">10dp</item>
+        <item name="android:inputType">numberDecimal|numberSigned</item>
+    </style>
+    <style name="settings_fragment_rb">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">40sp</item>
     </style>
     <style name="sectionName">
         <item name="android:layout_width">match_parent</item>

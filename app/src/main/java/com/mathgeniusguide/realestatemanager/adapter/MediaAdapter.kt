@@ -21,11 +21,9 @@ class MediaAdapter (private val items: ArrayList<MediaImage>, val context: Conte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = items[position]
+        // display image and corresponding room name for each item in media list
         Glide.with(context).load(i.url).into(holder.roomImage)
         holder.roomName.text = i.room
-        holder.parent.setOnClickListener {
-
-        }
     }
 
     class ViewHolder (view : View) : RecyclerView.ViewHolder(view) {

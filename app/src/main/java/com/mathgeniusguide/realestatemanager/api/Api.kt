@@ -1,6 +1,5 @@
 package com.mathgeniusguide.realestatemanager.api
 
-import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.responses.GeocodeResponse
 import com.mathgeniusguide.realestatemanager.utils.ConnectivityInterceptor
 import com.mathgeniusguide.realestatemanager.utils.Constants
@@ -14,8 +13,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Api {
-    // replace "API URL.json" with the URL that the API is called from
-    // replace "QUERY VARIABLE" with the variable that the API uses
     @GET("geocode/json")
     suspend fun getHouseItemWithCoordinates(@Query("address") address: String): Response<GeocodeResponse>
 

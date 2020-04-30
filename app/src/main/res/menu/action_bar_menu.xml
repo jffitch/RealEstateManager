@@ -26,14 +26,14 @@
         android:icon="@drawable/search"
         app:showAsAction="always" />
     <item
+        android:id="@+id/loan"
+        android:title="@string/loan_simulator"
+        android:icon="@drawable/dollar_sign"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/logout"
         android:title="@string/logout"
         android:icon="@drawable/logout"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/loan"
-        android:title="@string/loan_simulator"
-        android:icon="@drawable/loan"
         app:showAsAction="always" />
     <item
         android:id="@+id/settings"

@@ -342,6 +342,46 @@
             app:layout_constraintTop_toBottomOf="@id/addImageButton"
             android:layout_marginEnd="10dp" />
 
+        <TextView
+            android:id="@+id/saleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/add_fragment_section_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageUrlLabel"
+            android:text="@string/sale"/>
+
+        <TextView
+            android:id="@+id/soldLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="15dp"
+            android:text="@string/sold_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saleLabel" />
+
+        <CheckBox
+            android:id="@+id/soldField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/soldLabel"
+            app:layout_constraintStart_toEndOf="@id/soldLabel" />
+
+        <TextView
+            android:id="@+id/saleDateLabel"
+            style="@style/add_fragment_field_label"
+            android:layout_marginStart="15dp"
+            android:text="@string/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/soldLabel" />
+
+        <EditText
+            android:id="@+id/saleDateField"
+            style="@style/search_fragment_edittext_date"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@id/saleDateLabel"
+            app:layout_constraintStart_toEndOf="@id/saleDateLabel" />
+
         <Button
             android:id="@+id/addHouseButton"
             android:layout_width="wrap_content"
@@ -356,7 +396,7 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageUrlLabel" />
+            app:layout_constraintTop_toBottomOf="@id/saleDateLabel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

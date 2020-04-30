@@ -10,9 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.mathgeniusguide.realestatemanager.MainActivity
 import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.utils.Functions.filled
+import com.mathgeniusguide.realestatemanager.utils.convertEurosToDollars
 import com.mathgeniusguide.realestatemanager.utils.toHouseTypeConstant
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search_houses_fragment.*
+import java.util.*
 
 class SearchHousesFragment: Fragment() {
     lateinit var act: MainActivity
@@ -33,15 +35,17 @@ class SearchHousesFragment: Fragment() {
             searchButtonClicked()
         }
     }
-    fun searchButtonClicked() {
+    private fun searchButtonClicked() {
         // when search button is clicked, set filteredHouseItemList to houseItemList
         // filter by each filled field, empty fields are ignored
         act.filteredHouseItemList = act.houseItemList
         if (filled(priceMinField)) {
-            act.filteredHouseItemList = act.filteredHouseItemList.filter {it.price != null && it.price!! >= priceMinField.text.toString().toInt()}.toMutableList()
+            val price = if (Locale.getDefault().language != "en") priceMinField.text.toString().toInt().convertEurosToDollars() else priceMinField.text.toString().toInt()
+            act.filteredHouseItemList = act.filteredHouseItemList.filter {it.price != null && it.price!! >= price}.toMutableList()
         }
         if (filled(priceMaxField)) {
-            act.filteredHouseItemList = act.filteredHouseItemList.filter {it.price != null && it.price!! <= priceMaxField.text.toString().toInt()}.toMutableList()
+            val price = if (Locale.getDefault().language != "en") priceMaxField.text.toString().toInt().convertEurosToDollars() else priceMaxField.text.toString().toInt()
+            act.filteredHouseItemList = act.filteredHouseItemList.filter {it.price != null && it.price!! <= price}.toMutableList()
         }
         if (typeRG.checkedRadioButtonId != R.id.anyType) {
             act.filteredHouseItemList = act.filteredHouseItemList.filter {it.type != null && it.type!! == typeRG.checkedRadioButtonId.toHouseTypeConstant()}.toMutableList()

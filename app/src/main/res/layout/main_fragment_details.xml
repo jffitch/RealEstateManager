@@ -56,7 +56,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/roomsLabel"
-                android:text="@string/number_of_rooms"
+                android:text="@string/rooms"
                 app:layout_constraintBottom_toTopOf="@id/roomsStats"
                 app:layout_constraintStart_toEndOf="@id/roomsIcon"
                 app:layout_constraintTop_toTopOf="@id/roomsIcon" />
@@ -86,7 +86,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/bathroomsLabel"
-                android:text="@string/number_of_bathrooms"
+                android:text="@string/bathrooms"
                 app:layout_constraintBottom_toTopOf="@id/bathroomsStats"
                 app:layout_constraintStart_toEndOf="@id/bathroomsIcon"
                 app:layout_constraintTop_toTopOf="@id/bathroomsIcon" />
@@ -116,7 +116,7 @@
             <TextView
                 style="@style/details_label"
                 android:id="@+id/bedroomsLabel"
-                android:text="@string/number_of_bedrooms"
+                android:text="@string/bedrooms"
                 app:layout_constraintBottom_toTopOf="@id/bedroomsStats"
                 app:layout_constraintStart_toEndOf="@id/bedroomsIcon"
                 app:layout_constraintTop_toTopOf="@id/bedroomsIcon" />
@@ -164,6 +164,66 @@
                 app:layout_constraintBottom_toBottomOf="@id/locationIcon"
                 app:layout_constraintStart_toEndOf="@id/locationIcon"
                 app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/priceIcon"
+                android:src="@drawable/dollar_sign"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/priceLabel"
+                android:text="@string/price"
+                app:layout_constraintBottom_toTopOf="@id/priceStats"
+                app:layout_constraintStart_toEndOf="@id/priceIcon"
+                app:layout_constraintTop_toTopOf="@id/priceIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/priceStats"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="@id/priceIcon"
+                app:layout_constraintStart_toEndOf="@id/priceIcon"
+                app:layout_constraintTop_toBottomOf="@id/priceLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/details_image"
+                android:id="@+id/listingIcon"
+                android:src="@drawable/calendar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/details_label"
+                android:id="@+id/listingLabel"
+                android:text="@string/listing_info"
+                app:layout_constraintBottom_toTopOf="@id/listingStats"
+                app:layout_constraintStart_toEndOf="@id/listingIcon"
+                app:layout_constraintTop_toTopOf="@id/listingIcon" />
+
+            <TextView
+                style="@style/details_stats"
+                android:id="@+id/listingStats"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="@id/listingIcon"
+                app:layout_constraintStart_toEndOf="@id/listingIcon"
+                app:layout_constraintTop_toBottomOf="@id/listingLabel" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

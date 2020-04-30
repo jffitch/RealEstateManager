@@ -8,12 +8,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mathgeniusguide.realestatemanager.MainActivity
+import com.mathgeniusguide.realestatemanager.R
 import com.mathgeniusguide.realestatemanager.api.Api
 import com.mathgeniusguide.realestatemanager.database.HouseDao
 import com.mathgeniusguide.realestatemanager.database.HouseDatabase
 import com.mathgeniusguide.realestatemanager.database.HouseFirebaseItem
 import com.mathgeniusguide.realestatemanager.database.HouseRoomdbItem
 import com.mathgeniusguide.realestatemanager.utils.ConnectivityInterceptor
+import com.mathgeniusguide.realestatemanager.utils.Constants
 import com.mathgeniusguide.realestatemanager.utils.NoConnectivityException
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,9 +28,6 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
     private val _newHouseWithCoordinates: MutableLiveData<HouseFirebaseItem?>? = MutableLiveData()
     private val _updatedHouseWithCoordinates: MutableLiveData<HouseFirebaseItem?>? = MutableLiveData()
     private val _houseList = MutableLiveData<List<HouseRoomdbItem>>()
-    private val _isDataLoading = MutableLiveData<Boolean>()
-    private val _isDataLoadingError = MutableLiveData<Boolean>()
-
 
     // declare LiveData variables for observing in other classes
     val newHouseWithCoordinates: LiveData<HouseFirebaseItem?>?
@@ -36,10 +36,6 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
         get() = _updatedHouseWithCoordinates
     val houseList: LiveData<List<HouseRoomdbItem>>
         get() = _houseList
-    val isDataLoading: LiveData<Boolean>
-        get() = _isDataLoading
-    val isDataLoadingError: LiveData<Boolean>
-        get() = _isDataLoadingError
 
 
     // Room Database
@@ -71,9 +67,8 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // fetch coordinates for house address, then create or update on firebase
-    fun fetchHouseCoordinates(house: HouseFirebaseItem, isNew: Boolean) {
+    fun fetchHouseCoordinates(house: HouseFirebaseItem, isNew: Boolean, context: Context) {
         val connectivityInterceptor = ConnectivityInterceptor(getApplication())
-        _isDataLoading.value = true
         viewModelScope.launch {
             try {
                 Log.d("Real Estate Manager", "ViewModel Function Run")
@@ -96,13 +91,36 @@ class HousesViewModel(application: Application) : AndroidViewModel(application) 
                     }
                 } else {
                     // if result is empty because API call failed due to invalid address, show error message
-                    Toast.makeText(getApplication(), "Invalid Address", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, context.resources.getString(R.string.invalid_address), Toast.LENGTH_LONG).show()
                 }
-                _isDataLoading.postValue(false)
-                _isDataLoadingError.postValue(false)
             } catch (e: NoConnectivityException) {
-                _isDataLoading.postValue(false)
-                _isDataLoadingError.postValue(true)
+                // if no internet connection, show error message
+                Toast.makeText(context, context.resources.getString(R.string.no_internet), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    fun fetchCenterCoordinates(address: String, act: MainActivity) {
+        val connectivityInterceptor = ConnectivityInterceptor(getApplication())
+        viewModelScope.launch {
+            try {
+                // fetch response from API, use result
+                val response = Api.invoke(connectivityInterceptor).getHouseItemWithCoordinates(address).body()
+                val result = response?.results
+                if (!result.isNullOrEmpty()) {
+                    // use location from first result, if exists
+                    val location = result[0].geometry.location
+                    act.latitude.postValue(location.lat)
+                    act.longitude.postValue(location.lng)
+                } else {
+                    // if result is empty because API call failed due to invalid address, set to New York center as default
+                    act.latitude.postValue(Constants.LATITUDE_DEFAULT)
+                    act.longitude.postValue(Constants.LONGITUDE_DEFAULT)
+                }
+            } catch (e: NoConnectivityException) {
+                // if no internet connection, set to New York center as default
+                act.latitude.postValue(Constants.LATITUDE_DEFAULT)
+                act.longitude.postValue(Constants.LONGITUDE_DEFAULT)
             }
         }
     }

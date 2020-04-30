@@ -1,0 +1,170 @@
+<resources>
+    <string name="app_name">Gerente De Bienes Raíces</string>
+
+    <!--Login Screen-->
+    <string name="email">Correo Electrónico</string>
+    <string name="display_name">Nombre Para Mostrar</string>
+    <string name="password">Contraseña</string>
+    <string name="reenter_password">Verifique Contraseña</string>
+    <string name="sign_in">Iniciar Sesión</string>
+    <string name="new_account">Nueva Cuenta</string>
+    <string name="forgot_password">Olvidé Mi Contraseña</string>
+    <string name="password_reset_email_sent">Restablecer Contraseña Correo Electrónico Enviado</string>
+
+    <!--Main Screen Details-->
+    <string name="surface_area">Área De Superficie</string>
+    <string name="location">Ubicación</string>
+    <string name="number_sq_m">%1$d m²</string>
+    <string name="dollar_sign">€%2$s</string>
+    <string name="currency_decimal">%,.2f</string>
+    <string name="currency">%,d</string>
+    <string name="media">Fotos:</string>
+    <string name="description">Descripción:</string>
+    <string name="welcome">Bienvenido, %1$s</string>
+    <string name="listing_info">Información De Listado</string>
+    <string name="listed_on">Listado En %1$s</string>
+    <string name="by_agent">Por %1$s</string>
+    <string name="full_listing">#1$s\n%2$s\n%3$s</string>
+    <string name="sold_on">Vendido En %1$s</string>
+    <string name="sold_caps">VENDIDO</string>
+
+    <!--Add House Fragment-->
+    <string name="address">Dirección</string>
+    <string name="city">Ciudad</string>
+    <string name="borough">Municipio</string>
+    <string name="zip">Postal</string>
+    <string name="stats">Estadísticas</string>
+    <string name="price">Precio €</string>
+    <string name="area">Area</string>
+    <string name="sq_m">m²</string>
+    <string name="rooms">Cuartos</string>
+    <string name="bedrooms">Dormitorios</string>
+    <string name="bathrooms">Baños</string>
+    <string name="about">Informacion</string>
+    <string name="type">Tipo</string>
+    <string name="add_image">AGREGUE FOTO</string>
+    <string name="remove_image">ELIMINE FOTO</string>
+    <string name="add_house">AGREGUE CASA</string>
+    <string name="update_house">ACTUALICE CASA</string>
+    <string name="images">Fotos</string>
+    <string name="room">Cuarto</string>
+    <string name="url">URL</string>
+    <string name="sale">Venta</string>
+
+    <!--House Types-->
+    <string name="house">Casa</string>
+    <string name="flat">Plana</string>
+    <string name="duplex">Duplex</string>
+    <string name="penthouse">Ático</string>
+
+    <!--Icons-->
+    <string name="add_a_house">Añada Una Casa</string>
+    <string name="update_a_house">Actualice Una Casa</string>
+    <string name="main">Principal</string>
+    <string name="search_houses">Busque Casas</string>
+    <string name="logout">Cierre Sesión</string>
+    <string name="map">Mapa</string>
+    <string name="loan_simulator">Simulador De Préstamos</string>
+    <string name="settings">Configuraciones</string>
+    <string name="instructions">Instrucciones</string>
+
+    <!-- Search Houses Fragment-->
+    <string name="price_from_">Precio De €</string>
+    <string name="to_dollars">A €</string>
+    <string name="house_type">Tipo De Casa</string>
+    <string name="any">Cualquier</string>
+    <string name="area_from">Área De</string>
+    <string name="sq_m_to">m² A</string>
+    <string name="rooms_from">Cuartos De</string>
+    <string name="bathrooms_from">Baños De</string>
+    <string name="bedrooms_from">Dormitorios De</string>
+    <string name="agent">Agente</string>
+    <string name="list_date_from">Fecha De Listado De</string>
+    <string name="sold">Vendido</string>
+    <string name="sold_question">¿Vendido?</string>
+    <string name="not_sold">No Vendido</string>
+    <string name="sale_date_from">Fecha De Venta De</string>
+    <string name="save">Guarde</string>
+    <string name="to">A</string>
+
+    <!-- Map Fragment -->
+    <string name="you_are_here">Esta Aqui</string>
+
+    <!-- Settings Fragment -->
+    <string name="location_mode">Modo De Ubicación</string>
+    <string name="actual">Real</string>
+    <string name="coordinates">Coordenadas</string>
+    <string name="latitude">Latitud</string>
+    <string name="longitude">Longitud</string>
+
+    <!-- Instructions Fragment -->
+    <string name="login_screen">Pantalla De Inicio De Sesión</string>
+    <string name="login_screen_1">Cuando abre la aplicación, si no ha iniciado sesión, la aplicación se abrirá en la pantalla de inicio de sesión.</string>
+    <string name="login_screen_2">Si desea iniciar sesión como usuario existente, complete las casillas Correo Electrónico y Contraseña.</string>
+    <string name="login_screen_3">Si desea iniciar sesión como nuevo usuario, haga clic en Nueva Cuenta. Aparecerán dos nuevos casillas (Nombre para Mostrar y Contraseña de Verifique). Completa las cuatro casillas.</string>
+    <string name="login_screen_4">Después de iniciar sesión, se mostrará la pantalla principal.</string>
+    <string name="login_screen_5">Al hacer clic en el icono Cerrar sesión se mostrará la pantalla de inicio de sesión.</string>
+    <string name="main_screen">Pantalla Principal</string>
+    <string name="main_screen_1">Cuando abre la aplicación, si ha iniciado sesión, la aplicación se abrirá en la pantalla principal.</string>
+    <string name="main_screen_2">Al hacer clic en el icono de la Casa, se mostrará la pantalla principal.</string>
+    <string name="main_screen_3">A la izquierda de la pantalla, una lista muestra todas las casas que se han agregado a la base de datos. Se muestra el tipo de cada casa (Casa, Piso, Dúplex, Ático), municipio y precio.</string>
+    <string name="main_screen_4">Al hacer clic en una casa en la lista, se muestra la información de esa casa. Por defecto, la información se muestra para la primera casa en la lista.</string>
+    <string name="main_screen_5">Se muestran la descripción de la casa, el área de superficie, la cantidad de habitaciones, la cantidad de baños, la cantidad de habitaciones y la dirección. También se muestra un mapa centrado en la ubicación de la casa.</string>
+    <string name="main_screen_6">Si la casa tiene imágenes, se muestran en la parte superior de la pantalla.</string>
+    <string name="map_screen">Pantalla De Mapa</string>
+    <string name="map_screen_1">Al hacer clic en el icono del Mapa, se mostrará la pantalla del Mapa.</string>
+    <string name="map_screen_2">La pantalla Mapa muestra un mapa, centrado en la ubicación que eligió en su configuración, con marcadores para las casas cercanas.</string>
+    <string name="map_screen_3">Al hacer clic en una casa, se mostrará el tipo y el precio de la casa. Al hacer clic, se mostrará la pantalla principal con la información de esa casa.</string>
+    <string name="add_house_screen">Añadir Pantalla De La Casa</string>
+    <string name="add_house_screen_1">Al hacer clic en el ícono Más, aparecerá la pantalla Agregar casa, que le permite agregar una casa a la lista.</string>
+    <string name="add_house_screen_2">Al hacer clic en Agregar casa, se agrega la casa a la lista utilizando la información proporcionada.</string>
+    <string name="add_house_screen_3">Todos las casillas deben completarse, excepto las imágenes que son opcionales.</string>
+    <string name="add_house_screen_4">Para agregar imágenes, ingrese a la sala que está visible en la imagen y la URL de la imagen. Luego, haga clic en Agregar imagen.</string>
+    <string name="add_house_screen_5">Para eliminar la imagen agregada más recientemente, haga clic en Eliminar imagen.</string>
+    <string name="edit_house_screen">Editar Pantalla De La Casa</string>
+    <string name="edit_house_screen_1">Al hacer clic en el icono Editar, aparecerá la pantalla Editar casa, que le permite editar una casa en la lista.</string>
+    <string name="edit_house_screen_2">La mayoría de las funciones de la pantalla Editar casa son las mismas que en la pantalla Agregar casa.</string>
+    <string name="edit_house_screen_3">Puede editar una casa solo si usted es la persona que la agregó.</string>
+    <string name="search_houses_screen">Pantalla De Búsqueda De Casas</string>
+    <string name="search_houses_screen_1">Al hacer clic en el icono Buscar, se mostrará la pantalla Buscar casas, que le permite mostrar solo las casas que cumplan con los criterios deseados.</string>
+    <string name="search_houses_screen_2">Todos las casillas son opcionales. Si un casilla se deja en blanco, ese criterio de búsqueda será ignorado.</string>
+    <string name="search_houses_screen_3">Al hacer clic en Buscar casas, se mostrará la pantalla principal con la lista filtrada para que coincida con sus criterios de búsqueda, si al menos una casa coincide.</string>
+    <string name="settings_screen">Pantalla De Configuración</string>
+    <string name="settings_screen_1">La pantalla Configuración le permite personalizar su configuración.</string>
+    <string name="settings_screen_2">La configuración de su ubicación se usa al ver la pantalla Mapa. Puede usar su ubicación real o una ubicación ingresada manualmente.</string>
+
+    <!-- Notifications -->
+    <string name="property_added">Propiedad Agregada</string>
+    <string name="property_added_details">%1$s por €%3$s en %4$s agregado.</string>
+    <string name="property_updated">Propiedad Actualizada</string>
+    <string name="property_updated_details">%1$s por €%3$s en %34s actualizado.</string>
+
+    <!-- Loan Simulator -->
+    <string name="price_placeholder">00,000,000</string>
+    <string name="time">Tiempo</string>
+    <string name="years">años</string>
+    <string name="interest">Interés</string>
+    <string name="calculate">Calcule</string>
+    <string name="payment">Pago €</string>
+    <string name="down_payment">Inicial €</string>
+    <string name="payment_placeholder">000,000,00</string>
+    <string name="date">Fecha</string>
+    <string name="principal">Principal</string>
+    <string name="balance">Saldo</string>
+    <string name="date_text">%1$s 1, %2$d</string>
+
+    <!-- Error Messages -->
+    <string name="no_search_results">No hay casas que coincidan con su búsqueda.</string>
+    <string name="fields_empty">Por favor rellena todas las casillas.</string>
+    <string name="no_images_added_yet">No hay fotos agregadas todavía.</string>
+    <string name="no_property_selected">Ninguna propiedad seleccionada.</string>
+    <string name="not_agent">Usted no es el agente a cargo de esta propiedad.</string>
+    <string name="email_required">Correo Electronico es requerido.</string>
+    <string name="email_password_required">Se requiere Correo Electrónico y Contraseña.</string>
+    <string name="passwords_must_match">Las contraseñas deben coincidir.</string>
+    <string name="email_displayname_password_reenter_required">Se requiere Correo Electrónico, Nombre para Mostrar, Contraseña y Verifique Contraseña.</string>
+    <string name="time_empty">Por favor llene la casilla Tiempo.</string>
+    <string name="invalid_email">Email Inválido</string>
+    <string name="invalid_address">Dirección Inválida</string>
+    <string name="no_internet">No hay conexión a Internet.</string>
+</resources>

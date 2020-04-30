@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
     private lateinit var act: MainActivity
-    var newAccountReady = false
+    private var newAccountReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +63,9 @@ class LoginFragment : Fragment() {
                 reenterPasswordField.visibility = View.VISIBLE
                 newAccountReady = true
             }
+        }
+        forgotPasswordButton.setOnClickListener {
+            act.passwordReset(emailField.text.toString())
         }
     }
 }
