@@ -35,10 +35,10 @@ class SettingsFragment : Fragment() {
 
         // load values from Shared Preferences and use values to set text for views
         pref = context?.getSharedPreferences(Constants.PREF, 0)
-        locationMethod = pref?.getInt("locationMethod", Constants.LOCATION_ACTUAL) ?: Constants.LOCATION_ACTUAL
-        latitude = pref?.getFloat("latitude", Constants.LATITUDE_DEFAULT.toFloat())?.toDouble() ?: Constants.LATITUDE_DEFAULT
-        longitude = pref?.getFloat("longitude", Constants.LONGITUDE_DEFAULT.toFloat())?.toDouble() ?: Constants.LONGITUDE_DEFAULT
-        address = pref?.getString("address", Constants.ADDRESS_DEFAULT) ?: Constants.ADDRESS_DEFAULT
+        locationMethod = pref?.getInt(Constants.STRING_LOCATION_METHOD, Constants.LOCATION_ACTUAL) ?: Constants.LOCATION_ACTUAL
+        latitude = pref?.getFloat(Constants.STRING_LATITUDE, Constants.LATITUDE_DEFAULT.toFloat())?.toDouble() ?: Constants.LATITUDE_DEFAULT
+        longitude = pref?.getFloat(Constants.STRING_LONGITUDE, Constants.LONGITUDE_DEFAULT.toFloat())?.toDouble() ?: Constants.LONGITUDE_DEFAULT
+        address = pref?.getString(Constants.STRING_ADDRESS, Constants.ADDRESS_DEFAULT) ?: Constants.ADDRESS_DEFAULT
 
         latitudeField.setText(latitude.toString())
         longitudeField.setText(longitude.toString())
@@ -97,10 +97,10 @@ class SettingsFragment : Fragment() {
                 else -> Constants.LOCATION_ACTUAL
             }
             val editor = pref?.edit()
-            editor?.putInt("locationMethod", locationMethod)
-            editor?.putFloat("latitude", latitude.toFloat())
-            editor?.putFloat("longitude", longitude.toFloat())
-            editor?.putString("address", address)
+            editor?.putInt(Constants.STRING_LOCATION_METHOD, locationMethod)
+            editor?.putFloat(Constants.STRING_LATITUDE, latitude.toFloat())
+            editor?.putFloat(Constants.STRING_LONGITUDE, longitude.toFloat())
+            editor?.putString(Constants.STRING_ADDRESS, address)
             editor?.apply()
         }
     }

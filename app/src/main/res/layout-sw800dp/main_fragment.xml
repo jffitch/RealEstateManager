@@ -87,13 +87,3 @@
         android:layout_marginEnd="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--Code Generator
-houseList, rv, 250, m, ,l
-mediaLabel, tvb25, ww, sm15, 0m15
-imageList, rv, fw, mm15, 0m15
-descriptionLabel, tvb25, ww, mm30, 0m15
-descriptionText, tv, fw, mm15, 0m15
-details, in, ff, em15, 0m15, 6m15
-googleMap, mv, fw, 4m15, pm15, 5, pm15
--->

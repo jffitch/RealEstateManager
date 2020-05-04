@@ -102,14 +102,3 @@
         app:layout_constraintTop_toBottomOf="@id/addressLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- code generator
-
-    useSensorLabel, tvb25, ww, tm25, lm25
-    useSensorCheckBox, cb, ww, x-1*,, x-1m10
-    latitudeLabel, tvb25, ww, x-2m10,, lm25
-    latitudeField, et25, 200, w,, x-1*, x-1m10
-    longitudeLabel, tvb25, ww, x-2m10,, lm25
-    longitudeField, et25, 200, w,, x-1*, x-1m10
-
-    -->

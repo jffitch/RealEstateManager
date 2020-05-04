@@ -398,37 +398,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
-    <!-- code generator
-
-    locationLabel, tvb25, ww, tm25, lm25
-    addressLabel, tv15, ww, 0m5,, lm10
-    addressField, et15, 300, w, 1,, 1m5
-    cityLabel, tv15, ww, 1m5,, lm10
-    cityField, et15, 120, w, 3*,, 3m5
-    boroughLabel, tv15, ww, 3*,, 4m15
-    boroughField, et15, 120, w, 3*,, 5m5
-    zipLabel, tv15, ww, 3*,, 6m15
-    zipField, et15, 60, w, 3*,, 7m5
-    statsLabel, tvb25, ww, 8m25,, lm25
-    priceLabel, tv15, ww, 9m5,, lm10
-    priceField, et15, 80, w, 10*,, 10m5
-    areaLabel, tv15, ww, 10*,, 11m30
-    areaField, et15, 40, w, 10*,, 12m5
-    areaUnitLabel, tv15, ww, 10*,, 13m5
-    roomsLabel, tv15, ww, 10m5,, lm10
-    roomsField, et15, 25, w, 15*,, 15m5
-    bedLabel, tv15, ww, 15*,, 16m30
-    bedField, et15, 25, w, 15*,, 17m5
-    bathLabel, tv15, ww, 15*,, 18m30
-    bathField, et15, 25, w, 15*,, 19m5
-    imagesLabel, tv, ww, 15m25,, lm25
-    imagesList, tvi15, ww, 21m5,, lm10
-    imageRoomLabel, tv15, ww, 22m5,, lm10
-    imageRoomField, et15, 60, w,, 23*, 23m5
-    imageUrlLabel, tv15, ww,, 23*, 24m15
-    imageUrlField, et15, 120, w,, 23*, 25m5
-    addImageButton, bu15, ww,, 23*, 26m5
-    addButton, bub30, ww, 23m25,, lm25
-
-    -->

@@ -108,21 +108,21 @@ class MainActivity : AppCompatActivity(), LocationListener {
             val houseItem = HouseFirebaseItem.create()
             val map = currentItem.getValue() as HashMap<String, Any>
             houseItem.id = currentItem.key
-            houseItem.agent = map["agent"] as String?
-            houseItem.area = (map["area"] as Long).toInt()
-            houseItem.bathrooms = (map["bathrooms"] as Long).toInt()
-            houseItem.bedrooms = (map["bedrooms"] as Long).toInt()
-            houseItem.borough = map["borough"] as String?
-            houseItem.description = map["description"] as String?
-            houseItem.images = map["images"] as String?
-            houseItem.latitude = map["latitude"] as Double?
-            houseItem.listDate = map["listDate"] as String?
-            houseItem.location = map["location"] as String?
-            houseItem.longitude = map["longitude"] as Double?
-            houseItem.price = (map["price"] as Long).toInt()
-            houseItem.rooms = (map["rooms"] as Long).toInt()
-            houseItem.saleDate = map["saleDate"] as String?
-            houseItem.type = (map["type"] as Long).toInt()
+            houseItem.agent = map[Constants.STRING_AGENT] as String?
+            houseItem.area = (map[Constants.STRING_AREA] as Long).toInt()
+            houseItem.bathrooms = (map[Constants.STRING_BATHROOMS] as Long).toInt()
+            houseItem.bedrooms = (map[Constants.STRING_BEDROOMS] as Long).toInt()
+            houseItem.borough = map[Constants.STRING_BOROUGH] as String?
+            houseItem.description = map[Constants.STRING_DESCRIPTION] as String?
+            houseItem.images = map[Constants.STRING_IMAGES] as String?
+            houseItem.latitude = map[Constants.STRING_LATITUDE] as Double?
+            houseItem.listDate = map[Constants.STRING_LIST_DATE] as String?
+            houseItem.location = map[Constants.STRING_LOCATION] as String?
+            houseItem.longitude = map[Constants.STRING_LONGITUDE] as Double?
+            houseItem.price = (map[Constants.STRING_PRICE] as Long).toInt()
+            houseItem.rooms = (map[Constants.STRING_ROOMS] as Long).toInt()
+            houseItem.saleDate = map[Constants.STRING_SALE_DATE] as String?
+            houseItem.type = (map[Constants.STRING_TYPE] as Long).toInt()
             // if house with that ID already exists, remove it and replace with new house
             houseItemList = houseItemList.filter { houseItem.id != it.id }.toMutableList()
             houseItemList.add(houseItem)
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     private fun setUpLocation() {
         // load saved preference for radius
         val pref = getSharedPreferences(Constants.PREF, 0)
-        val locationMethod = pref?.getInt("locationMethod", Constants.LOCATION_ACTUAL)
+        val locationMethod = pref?.getInt(Constants.STRING_LOCATION_METHOD, Constants.LOCATION_ACTUAL)
                 ?: Constants.LOCATION_ACTUAL
         when (locationMethod) {
             Constants.LOCATION_ACTUAL -> {
@@ -179,15 +179,15 @@ class MainActivity : AppCompatActivity(), LocationListener {
             }
             Constants.LOCATION_COORDINATES -> {
                 // get coordinates from preferences, then exit this function
-                latitude.postValue((pref?.getFloat("latitude", Constants.LATITUDE_DEFAULT.toFloat())
+                latitude.postValue((pref?.getFloat(Constants.STRING_LATITUDE, Constants.LATITUDE_DEFAULT.toFloat())
                         ?: Constants.LATITUDE_DEFAULT.toFloat()).toDouble())
-                longitude.postValue((pref?.getFloat("longitude", Constants.LONGITUDE_DEFAULT.toFloat())
+                longitude.postValue((pref?.getFloat(Constants.STRING_LONGITUDE, Constants.LONGITUDE_DEFAULT.toFloat())
                         ?: Constants.LONGITUDE_DEFAULT.toFloat()).toDouble())
                 return
             }
             Constants.LOCATION_ADDRESS -> {
                 // get address from preferences, then exit this function
-                viewModel.fetchCenterCoordinates(pref?.getString("address", Constants.ADDRESS_DEFAULT)
+                viewModel.fetchCenterCoordinates(pref?.getString(Constants.STRING_ADDRESS, Constants.ADDRESS_DEFAULT)
                         ?: Constants.ADDRESS_DEFAULT, this)
                 return
             }

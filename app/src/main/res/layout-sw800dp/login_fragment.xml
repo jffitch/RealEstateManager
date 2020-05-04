@@ -110,18 +110,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
-    <!-- code generator
-
-    emailLabel, tvb20, 450, w, sm10, c
-    emailField, et20, 450, w, m, c
-    displayNameLabel, tvb20, 450, w, m, c
-    displayNameField, et20, 450, w, m, c
-    passwordLabel, tvb20, 450, w, m, c
-    passwordField, et20, 450, w, m, c
-    reenterPasswordLabel, tvb20, 450, w, m, c
-    reenterPasswordField, et20, 450, w, m, c
-    signInButton, bub20, 220, w, 7,, 7*
-    newAccountButton, bub20, 220, w, 8*,,, 7*
-
-    -->

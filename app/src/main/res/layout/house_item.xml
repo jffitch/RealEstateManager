@@ -52,10 +52,3 @@
         android:layout_marginStart="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--Code Generator
-houseImage, iv, 60, 60, c, l
-houseType, tvb15, ww, s, 0m10
-houseLocation, tv15, ww, m, 0m10
-housePrice, tv15, ww, e, 0m10
--->

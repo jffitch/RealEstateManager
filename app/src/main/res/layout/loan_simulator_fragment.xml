@@ -145,21 +145,3 @@
         app:layout_constraintEnd_toEndOf="@id/paymentListLabels" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!-- code generator
-
-priceLabel, tvb25, ww, tm25, lm25
-priceField, tv25, ww,, x-1*, x-1m10
-timeLabel, tvb25, ww, x-2m10,, lm25
-timeField, et25, 30, w,, x-1*, x-1m10
-timeUnit, tv25, ww,, x-1*, x-1m10
-interestLabel, tvb25, ww, x-3m10,, lm25
-interestField, et25, 54, w,, x-1*, x-1m10
-interestUnit, tv25, ww,, x-1*, x-1m10
-calculateButton, bub25, ww, x-3m10,, lm25
-paymentLabel, tvb25, ww, x-1m10,, lm25
-paymentField, tv25, ww,, x-1*, x-1m10
-paymentListLabels, llh, fw, tm10, em25
-paymentList, rv, ff, e, x-1*, x-1*
-
--->
